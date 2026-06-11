@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>MY GLOBAL SOLUTIONS GROUP | Dashboard Ejecutivo</title>
+    <title>MY GLOBAL SOLUTIONS GROUP | DASHBOARD EJECUTIVO</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -40,6 +40,22 @@
             min-height: 100vh;
             display: flex;
             overflow-x: hidden;
+            text-transform: uppercase;
+        }
+        input, select, textarea, button, .dropdown-btn, .filter-element, .search-wrapper input, .btn-expand, .badge-pill-flat, code {
+            text-transform: uppercase;
+        }
+        input::placeholder, textarea::placeholder {
+            text-transform: uppercase;
+        }
+        code {
+            text-transform: uppercase;
+        }
+        .kpi-flat-value, .text-right, .text-center {
+            text-transform: uppercase;
+        }
+        .chart-wrapper-card h3, .section-separator, .filter-section-title {
+            text-transform: uppercase;
         }
         #loader-overlay {
             position: fixed;
@@ -70,6 +86,7 @@
             font-weight: 500;
             letter-spacing: 1.5px;
             font-size: 0.85rem;
+            text-transform: uppercase;
         }
         #error-banner {
             display: none;
@@ -85,6 +102,7 @@
             z-index: 10000;
             font-size: 0.85rem;
             box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+            text-transform: uppercase;
         }
         .app-container {
             display: flex;
@@ -112,17 +130,163 @@
             max-width: 1600px;
             width: calc(100% - 280px);
             overflow-x: auto;
+            position: relative;
+        }
+        /* ===== CAMPANA NOTIFICACIONES ===== */
+        .notification-bell {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            z-index: 1000;
+        }
+        .bell-btn {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(2px);
+            border: 1px solid var(--border-flat);
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            font-size: 1.4rem;
+            color: var(--brand-primary);
+            cursor: pointer;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+        }
+        .bell-btn:hover {
+            background: var(--brand-primary);
+            color: white;
+            transform: scale(1.03);
+        }
+        .badge-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--danger);
+            color: white;
+            border-radius: 30px;
+            font-size: 0.65rem;
+            font-weight: bold;
+            padding: 2px 7px;
+            min-width: 20px;
+            text-align: center;
+            border: 1px solid white;
+        }
+        .notification-panel {
+            position: absolute;
+            top: 58px;
+            right: 0;
+            width: 340px;
+            max-height: 420px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.2);
+            border: 1px solid var(--border-flat);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 1100;
+        }
+        .notification-panel.hidden {
+            display: none;
+        }
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background: #F8FAFC;
+            border-bottom: 1px solid var(--border-flat);
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--text-main);
+        }
+        .panel-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        .mark-read-btn {
+            background: none;
+            border: none;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--brand-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 8px;
+            border-radius: 20px;
+            background: #EFF3F8;
+        }
+        .mark-read-btn:hover {
+            background: var(--brand-primary);
+            color: white;
+        }
+        .close-panel {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+        .notification-list {
+            overflow-y: auto;
+            max-height: 360px;
+        }
+        .notification-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid #F0F2F5;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            font-size: 0.75rem;
+        }
+        .notification-item.read {
+            opacity: 0.6;
+            text-decoration: line-through;
+            background-color: #F9F9FB;
+        }
+        .notification-item i {
+            color: var(--danger);
+            margin-top: 2px;
+        }
+        .notification-content {
+            flex: 1;
+        }
+        .notification-cliente {
+            font-weight: 700;
+            color: var(--text-main);
+        }
+        .notification-poliza {
+            font-family: monospace;
+            background: #F1F5F9;
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            display: inline-block;
+            margin-top: 4px;
+        }
+        .notification-empty {
+            padding: 30px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.8rem;
         }
         @media (max-width: 1024px) {
             .app-container { flex-direction: column; }
             .sidebar { width: 100%; height: auto; position: relative; padding: 20px; }
             .main-content { margin-left: 0; width: 100%; padding: 20px 16px; overflow-x: visible; }
+            .notification-bell { top: 12px; right: 16px; }
         }
         @media (max-width: 640px) {
             .main-content { padding: 16px 12px; }
             .kpi-card-flat { padding: 12px; }
             .kpi-flat-value { font-size: 1.2rem; }
+            .notification-panel { width: 280px; right: -10px; }
         }
+        /* Resto de estilos originales sin cambios */
         .sidebar-brand {
             display: flex;
             align-items: center;
@@ -151,6 +315,7 @@
             line-height: 1.2;
             color: white;
             margin-bottom: 6px;
+            text-transform: uppercase;
         }
         .sidebar-brand-text .healthspring-badge {
             font-size: 0.65rem;
@@ -181,6 +346,7 @@
             font-size: 0.75rem;
             font-weight: 600;
             color: #A0B5D0;
+            text-transform: uppercase;
         }
         .filter-element {
             width: 100%;
@@ -191,10 +357,12 @@
             color: #F1F5F9;
             font-size: 0.85rem;
             outline: none;
+            text-transform: uppercase;
         }
         select.filter-element option {
             word-break: break-word;
             white-space: normal;
+            text-transform: uppercase;
         }
         .custom-dropdown {
             position: relative;
@@ -213,6 +381,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            text-transform: uppercase;
         }
         .dropdown-btn span:first-child {
             overflow: hidden;
@@ -252,6 +421,7 @@
             font-size: 0.8rem;
             cursor: pointer;
             transition: background 0.1s;
+            text-transform: uppercase;
         }
         .checkbox-option:hover {
             background: #1E3A5F;
@@ -272,6 +442,7 @@
             word-break: break-word;
             white-space: normal;
             line-height: 1.4;
+            text-transform: uppercase;
         }
         .divider-dropdown {
             height: 1px;
@@ -293,6 +464,7 @@
             justify-content: center;
             gap: 8px;
             transition: 0.2s;
+            text-transform: uppercase;
         }
         .btn-reset-modern:hover, .btn-refresh-modern:hover {
             background: var(--danger);
@@ -338,6 +510,7 @@
             line-height: 1.2;
             color: var(--text-main);
             word-break: break-word;
+            text-transform: uppercase;
         }
         .kpi-flat-desc {
             font-size: 0.65rem;
@@ -349,6 +522,7 @@
             justify-content: center;
             gap: 5px;
             flex-wrap: wrap;
+            text-transform: uppercase;
         }
         .visual-matrix {
             display: grid;
@@ -374,6 +548,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
+            text-transform: uppercase;
         }
         .canvas-holder {
             position: relative;
@@ -435,6 +610,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            text-transform: uppercase;
         }
         .flex-between {
             display: flex;
@@ -450,6 +626,7 @@
             font-size: 0.7rem;
             font-weight: 600;
             white-space: nowrap;
+            text-transform: uppercase;
         }
         .search-wrapper {
             position: relative;
@@ -464,6 +641,7 @@
             background: #F8FAFC;
             transition: 0.2s;
             font-weight: 400;
+            text-transform: uppercase;
         }
         .search-wrapper input:focus {
             border-color: var(--brand-primary);
@@ -525,6 +703,7 @@
             color: var(--text-main);
             font-weight: 400;
             white-space: nowrap;
+            text-transform: uppercase;
         }
         .expanded-detail-card td {
             white-space: normal;
@@ -556,6 +735,7 @@
             border-radius: 40px;
             font-size: 0.7rem;
             font-weight: 600;
+            text-transform: uppercase;
         }
         .pill-active { background: #E0F2F0; color: #1E6F5C; }
         .pill-pending { background: #FFF2E0; color: #E9C46A; }
@@ -605,6 +785,7 @@
             white-space: normal;
             max-width: 100%;
             display: inline-block;
+            text-transform: uppercase;
         }
         .trigger-arrow {
             background: none;
@@ -617,7 +798,7 @@
             transform: rotate(90deg);
             color: var(--brand-primary);
         }
-        code { background: #F1F5F9; padding: 2px 6px; border-radius: 6px; font-size: 0.75rem; font-weight: 400; word-break: break-word; white-space: normal; }
+        code { background: #F1F5F9; padding: 2px 6px; border-radius: 6px; font-size: 0.75rem; font-weight: 400; word-break: break-word; white-space: normal; text-transform: uppercase; }
         .inner-payment-table {
             width: 100%;
             border-collapse: collapse;
@@ -633,6 +814,7 @@
             background: #F1F5F9;
             color: #2c3e50;
             text-align: center !important;
+            text-transform: uppercase;
         }
         .btn-expand {
             background: none;
@@ -646,6 +828,7 @@
             text-align: center;
             background: #F0F4F9;
             border-radius: 30px;
+            text-transform: uppercase;
         }
         .btn-expand:hover {
             background: var(--brand-primary);
@@ -671,6 +854,7 @@
             text-align: center;
             color: var(--text-muted);
             font-style: italic;
+            text-transform: uppercase;
         }
         .filter-inline {
             background: #F8FAFC;
@@ -681,6 +865,7 @@
             font-size: 0.8rem;
             width: auto;
             cursor: pointer;
+            text-transform: uppercase;
         }
         .comision-check {
             font-size: 1.2rem;
@@ -709,12 +894,43 @@
                 max-width: 100%;
             }
         }
+        .pagination-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 16px;
+            border-top: 1px solid var(--border-flat);
+            background: #FCFDFE;
+        }
+        .pagination-btn {
+            background: var(--brand-primary);
+            border: none;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            text-transform: uppercase;
+        }
+        .pagination-btn:disabled {
+            background: #C0C8D4;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        .pagination-info {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
 
 <div id="error-banner">
-    <i class="fas fa-exclamation-triangle"></i> Error crítico al cargar fuentes de datos. Verifique conectividad o formato CSV.
+    <i class="fas fa-exclamation-triangle"></i> ERROR CRÍTICO AL CARGAR FUENTES DE DATOS. VERIFIQUE CONECTIVIDAD O FORMATO CSV.
 </div>
 
 <div id="loader-overlay">
@@ -725,7 +941,7 @@
 <div class="app-container">
     <aside class="sidebar">
         <div class="sidebar-brand">
-            <img src="MY Globla logo1.jpg" alt="Logo MY GLOBAL" class="sidebar-logo" onerror="this.style.display='flex'; this.style.backgroundColor='#fff';">
+            <img src="MY Globla logo1.jpg" alt="LOGO MY GLOBAL" class="sidebar-logo" onerror="this.style.display='flex'; this.style.backgroundColor='#fff';">
             <div class="sidebar-brand-text">
                 <h1>MY GLOBAL SOLUTIONS GROUP</h1>
                 <span class="healthspring-badge">HEALTHSPRING</span>
@@ -733,61 +949,81 @@
         </div>
 
         <div class="filter-section-title">
-            <i class="fa-solid fa-sliders"></i> Segmentación Estratégica
+            <i class="fa-solid fa-sliders"></i> SEGMENTACIÓN ESTRATÉGICA
         </div>
         <div class="filter-wrapper">
             <div class="filter-box">
-                <label>📅 Periodo Temporal</label>
-                <input type="text" id="date-range-picker" class="filter-element" placeholder="Seleccionar rango ...">
+                <label>📅 PERIODO TEMPORAL</label>
+                <input type="text" id="date-range-picker" class="filter-element" placeholder="SELECCIONAR RANGO ...">
             </div>
             <div class="filter-box">
-                <label>🔖 Estado de Póliza</label>
+                <label>🔖 ESTADO DE PÓLIZA</label>
                 <div class="custom-dropdown" id="status-dropdown">
                     <button class="dropdown-btn" id="status-dropdown-btn">
-                        <span id="status-selected-text">Todos los estados</span>
+                        <span id="status-selected-text">TODOS LOS ESTADOS</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="dropdown-panel" id="status-dropdown-panel"></div>
                 </div>
             </div>
             <div class="filter-box">
-                <label>📦 Línea de Producto</label>
+                <label>📦 LÍNEA DE PRODUCTO</label>
                 <div class="custom-dropdown" id="product-dropdown">
                     <button class="dropdown-btn" id="product-dropdown-btn">
-                        <span id="product-selected-text">Todos los productos</span>
+                        <span id="product-selected-text">TODOS LOS PRODUCTOS</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="dropdown-panel" id="product-dropdown-panel"></div>
                 </div>
             </div>
             <div class="filter-box">
-                <label>👤 Agente / Productor</label>
+                <label>👤 AGENTE / PRODUCTOR</label>
                 <select id="agent-filter" class="filter-element">
-                    <option value="TODOS">Todos los Agentes</option>
+                    <option value="TODOS">TODOS LOS AGENTES</option>
                 </select>
             </div>
-            <button id="btn-clear-filters" class="btn-reset-modern"><i class="fa-solid fa-eraser"></i> Limpiar filtros</button>
-            <button id="btn-refresh-data" class="btn-refresh-modern"><i class="fa-solid fa-rotate-right"></i> Actualizar</button>
+            <button id="btn-clear-filters" class="btn-reset-modern"><i class="fa-solid fa-eraser"></i> LIMPIAR FILTROS</button>
+            <button id="btn-refresh-data" class="btn-refresh-modern"><i class="fa-solid fa-rotate-right"></i> ACTUALIZAR</button>
         </div>
     </aside>
 
     <main class="main-content">
+        <!-- CAMPANA DE NOTIFICACIONES -->
+        <div class="notification-bell">
+            <button id="bellButton" class="bell-btn">
+                <i class="fa-regular fa-bell"></i>
+                <span id="notificationCount" class="badge-count">0</span>
+            </button>
+            <div id="notificationPanel" class="notification-panel hidden">
+                <div class="panel-header">
+                    <span>⚠️ NOTIFICACIONES</span>
+                    <div class="panel-actions">
+                        <button id="markReadBtn" class="mark-read-btn"><i class="fa-regular fa-eye-slash"></i> MARCAR LEÍDAS</button>
+                        <button id="closePanelBtn" class="close-panel"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                </div>
+                <div id="notificationList" class="notification-list">
+                    <!-- contenido dinámico -->
+                </div>
+            </div>
+        </div>
+
         <div class="kpi-row-clean">
-            <div class="kpi-card-flat"><div><div class="kpi-flat-label">GLOBAL (NAP)</div><div class="kpi-flat-value" id="kpi-nap-total">0</div></div><div class="kpi-flat-desc"><i class="fa-solid fa-chart-line"></i> Prima anual neta</div></div>
-            <div class="kpi-card-flat"><div><div class="kpi-flat-label">Pólizas Emitidas</div><div class="kpi-flat-value" id="kpi-polizas-totales">0</div></div><div class="kpi-flat-desc"><i class="fa-solid fa-file-signature"></i> Contratos emitidos</div></div>
-            <div class="kpi-card-flat"><div><div class="kpi-flat-label">AGENTES ACTIVOS</div><div class="kpi-flat-value" id="kpi-agentes-activos">0</div></div><div class="kpi-flat-desc"><i class="fa-solid fa-user-tie"></i> Productores únicos</div></div>
-            <div class="kpi-card-flat"><div><div class="kpi-flat-label">Estados Líderes</div><div class="kpi-flat-value" id="kpi-top-estados" style="font-size: 1rem; font-weight:500;">—</div></div><div class="kpi-flat-desc"><i class="fa-solid fa-map-pin"></i> Top 3 regiones</div></div>
+            <div class="kpi-card-flat"><div><div class="kpi-flat-label">GLOBAL (NAP)</div><div class="kpi-flat-value" id="kpi-nap-total">0</div></div><div class="kpi-flat-desc"><i class="fa-solid fa-chart-line"></i> PRIMA ANUAL NETA</div></div>
+            <div class="kpi-card-flat"><div><div class="kpi-flat-label">PÓLIZAS EMITIDAS</div><div class="kpi-flat-value" id="kpi-polizas-totales">0</div></div><div class="kpi-flat-desc"><i class="fa-solid fa-file-signature"></i> CONTRATOS EMITIDOS</div></div>
+            <div class="kpi-card-flat"><div><div class="kpi-flat-label">AGENTES ACTIVOS</div><div class="kpi-flat-value" id="kpi-agentes-activos">0</div></div><div class="kpi-flat-desc"><i class="fa-solid fa-user-tie"></i> PRODUCTORES ÚNICOS</div></div>
+            <div class="kpi-card-flat"><div><div class="kpi-flat-label">ESTADOS LÍDERES</div><div class="kpi-flat-value" id="kpi-top-estados" style="font-size: 1rem; font-weight:500;">—</div></div><div class="kpi-flat-desc"><i class="fa-solid fa-map-pin"></i> TOP 3 REGIONES</div></div>
         </div>
 
         <div class="visual-matrix">
-            <div class="chart-wrapper-card"><h3><i class="fa-solid fa-chart-line"></i> Evolución Mensual NAP</h3><div class="canvas-holder"><canvas id="chart-monthly-nap"></canvas></div></div>
-            <div class="chart-wrapper-card"><h3><i class="fa-solid fa-chart-simple"></i> Cartera por Estatus</h3><div class="canvas-holder"><canvas id="chart-status-distribution"></canvas></div></div>
+            <div class="chart-wrapper-card"><h3><i class="fa-solid fa-chart-line"></i> EVOLUCIÓN MENSUAL NAP</h3><div class="canvas-holder"><canvas id="chart-monthly-nap"></canvas></div></div>
+            <div class="chart-wrapper-card"><h3><i class="fa-solid fa-chart-simple"></i> CARTERA POR ESTATUS</h3><div class="canvas-holder"><canvas id="chart-status-distribution"></canvas></div></div>
         </div>
 
-        <div class="section-separator">🏆 Rendimiento y Mix Comercial</div>
+        <div class="section-separator">🏆 RENDIMIENTO Y MIX COMERCIAL</div>
         <div class="grid-split-tables">
             <div class="block-table-card">
-                <div class="table-toolbar-top"><h3>Top 5 Agentes</h3></div>
+                <div class="table-toolbar-top"><h3>TOP 5 AGENTES</h3></div>
                 <div class="overflow-wrapper">
                     <table class="top-agentes-table">
                         <thead>
@@ -800,49 +1036,40 @@
             <div class="block-table-card">
                 <div class="table-toolbar-top">
                     <h3 class="flex-between">
-                        <span>Distribución por Línea</span>
-                        <span id="persistencia-global-label" class="persistencia-global">Persistencia Global: --%</span>
+                        <span>DISTRIBUCIÓN POR LÍNEA</span>
+                        <span id="persistencia-global-label" class="persistencia-global">PERSISTENCIA GLOBAL: --%</span>
                     </h3>
                 </div>
                 <div class="overflow-wrapper">
                     <table class="productos-table">
-                        <thead><tr><th class="text-left">Producto</th><th class="text-center">Volumen</th><th class="text-right">NAP Total</th></tr></thead>
+                        <thead><tr><th class="text-left">PRODUCTO</th><th class="text-center">VOLUMEN</th><th class="text-right">NAP TOTAL</th></tr></thead>
                         <tbody id="tbody-productos"></tbody>
                     </table>
                 </div>
             </div>
         </div>
 
-        <div class="section-separator">📋 Historial de Pólizas</div>
+        <div class="section-separator">📋 HISTORIAL DE PÓLIZAS</div>
         <div class="block-table-card">
             <div class="table-toolbar-top">
-                <h3><i class="fa-regular fa-file-lines"></i> Historial de Pólizas</h3>
+                <h3><i class="fa-regular fa-file-lines"></i> HISTORIAL DE PÓLIZAS</h3>
                 <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
                     <div class="search-wrapper" style="width: auto; min-width: 180px;">
                         <i class="fas fa-search search-icon"></i>
-                        <input type="text" id="search-polizas" placeholder="Cliente, agente, código...">
+                        <input type="text" id="search-polizas" placeholder="CLIENTE, AGENTE, CÓDIGO...">
                         <button class="clear-search" data-search="polizas"><i class="fas fa-times-circle"></i></button>
                     </div>
-                    <!-- NUEVO FILTRO DE COMISIÓN EN HISTORIAL DE PÓLIZAS -->
                     <select id="polizas-comision-filter" class="filter-element filter-inline">
-                        <option value="TODOS">Comisión: Todos</option>
-                        <option value="CON">Con comisión</option>
-                        <option value="SIN">Sin comisión</option>
+                        <option value="TODOS">COMISIÓN: TODOS</option>
+                        <option value="CON">CON COMISIÓN</option>
+                        <option value="SIN">SIN COMISIÓN</option>
                     </select>
                 </div>
             </div>
             <div class="overflow-wrapper">
                 <table>
                     <thead>
-                        <tr>
-                            <th class="text-center" style="width: 50px;"></th>
-                            <th class="text-left">Agente</th>
-                            <th class="text-left">Producto</th>
-                            <th class="text-left">Código Póliza</th>
-                            <th class="text-center">Comisión</th>
-                            <th class="text-right">NAP</th>
-                            <th class="text-center">Estatus</th>
-                        </tr>
+                        <tr><th class="text-center" style="width: 50px;"></th><th class="text-left">AGENTE</th><th class="text-left">PRODUCTO</th><th class="text-left">CÓDIGO PÓLIZA</th><th class="text-center">COMISIÓN</th><th class="text-right">NAP</th><th class="text-center">ESTATUS</th></tr>
                     </thead>
                     <tbody id="tbody-detallado-polizas"></tbody>
                 </table>
@@ -850,25 +1077,20 @@
             <div id="polizas-btn-container" class="btn-group-expand"></div>
         </div>
 
-        <div class="section-separator">📋 Contrataciones</div>
+        <div class="section-separator">📋 CONTRATACIONES</div>
         <div class="block-table-card">
             <div class="table-toolbar-top">
-                <h3><i class="fa-solid fa-users-viewfinder"></i> Contrataciones</h3>
+                <h3><i class="fa-solid fa-users-viewfinder"></i> CONTRATACIONES</h3>
                 <div class="search-wrapper">
                     <i class="fas fa-search search-icon"></i>
-                    <input type="text" id="search-contrataciones" placeholder="Buscar agente...">
+                    <input type="text" id="search-contrataciones" placeholder="BUSCAR AGENTE...">
                     <button class="clear-search" data-search="contrataciones"><i class="fas fa-times-circle"></i></button>
                 </div>
             </div>
             <div class="overflow-wrapper">
                 <table>
                     <thead>
-                        <tr>
-                            <th class="text-center" style="width: 50px;"></th>
-                            <th class="text-left">AGENTE</th>
-                            <th class="text-center">ÚLTIMO PROCESO</th>
-                            <th class="text-center">ESTATUS ACTUAL</th>
-                        </tr>
+                        <tr><th class="text-center" style="width: 50px;"></th><th class="text-left">AGENTE</th><th class="text-center">ÚLTIMO PROCESO</th><th class="text-center">ESTATUS ACTUAL</th></tr>
                     </thead>
                     <tbody id="tbody-contrataciones"></tbody>
                 </table>
@@ -876,25 +1098,20 @@
             <div id="contrataciones-btn-container" class="btn-group-expand"></div>
         </div>
 
-        <div class="section-separator">🏢 Estructura de Agentes</div>
+        <div class="section-separator">🏢 ESTRUCTURA DE AGENTES</div>
         <div class="block-table-card">
             <div class="table-toolbar-top">
-                <h3><i class="fa-solid fa-sitemap"></i> Estructura de Agentes</h3>
+                <h3><i class="fa-solid fa-sitemap"></i> ESTRUCTURA DE AGENTES</h3>
                 <div class="search-wrapper">
                     <i class="fas fa-search search-icon"></i>
-                    <input type="text" id="search-jerarquia" placeholder="Buscar agente, upline...">
+                    <input type="text" id="search-jerarquia" placeholder="BUSCAR AGENTE, UPLINE...">
                     <button class="clear-search" data-search="jerarquia"><i class="fas fa-times-circle"></i></button>
                 </div>
             </div>
             <div class="overflow-wrapper">
                 <table>
                     <thead>
-                        <tr>
-                            <th class="text-center" style="width: 50px;"></th>
-                            <th class="text-left">AGENTE</th>
-                            <th class="text-left">ID PRODUCER</th>
-                            <th class="text-center">NIVEL ACTUAL</th>
-                        </tr>
+                        <tr><th class="text-center" style="width: 50px;"></th><th class="text-left">AGENTE</th><th class="text-left">ID PRODUCER</th><th class="text-center">NIVEL ACTUAL</th></tr>
                     </thead>
                     <tbody id="tbody-jerarquia"></tbody>
                 </table>
@@ -902,22 +1119,53 @@
             <div id="jerarquia-btn-container" class="btn-group-expand"></div>
         </div>
 
-        <!-- SECCIÓN COMISIONES POR PÓLIZA -->
-        <div class="section-separator">💰 Comisiones por Póliza</div>
+        <div class="section-separator">💰 COMISIONES POR PÓLIZA</div>
         <div class="block-table-card">
             <div class="table-toolbar-top">
-                <h3><i class="fa-solid fa-dollar-sign"></i> Comisiones por Póliza</h3>
+                <h3><i class="fa-solid fa-dollar-sign"></i> COMISIONES POR PÓLIZA</h3>
                 <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
                     <div class="search-wrapper" style="width: auto; min-width: 180px;">
                         <i class="fas fa-search search-icon"></i>
-                        <input type="text" id="search-comisiones" placeholder="Buscar cliente, código...">
+                        <input type="text" id="search-comisiones" placeholder="BUSCAR CLIENTE, CÓDIGO...">
                         <button class="clear-search" data-search="comisiones"><i class="fas fa-times-circle"></i></button>
                     </div>
                     <select id="comision-status-filter" class="filter-element filter-inline">
-                        <option value="TODOS">Estatus: Todos</option>
+                        <option value="TODOS">ESTATUS: TODOS</option>
                     </select>
                     <select id="comision-month-filter" class="filter-element filter-inline">
-                        <option value="TODOS">Mes Activación: Todos</option>
+                        <option value="TODOS">MES ACTIVACIÓN: TODOS</option>
+                    </select>
+                </div>
+            </div>
+            <div class="overflow-wrapper">
+                <table>
+                    <thead>
+                        <tr><th class="text-center" style="width: 50px;"></th><th class="text-left">CÓDIGO PÓLIZA</th><th class="text-left">CLIENTE</th><th class="text-right">NAP</th><th class="text-right">COMISIÓN</th><th class="text-center">ESTATUS</th></tr>
+                    </thead>
+                    <tbody id="tbody-comisiones"></tbody>
+                </table>
+            </div>
+            <div id="comisiones-btn-container" class="btn-group-expand"></div>
+        </div>
+
+        <div class="section-separator">💰 SEGUIMIENTO PAGOS</div>
+        <div class="block-table-card">
+            <div class="table-toolbar-top">
+                <h3><i class="fa-solid fa-credit-card"></i> SEGUIMIENTO PAGOS</h3>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+                    <div class="search-wrapper" style="width: auto; min-width: 180px;">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="search-pagos" placeholder="CLIENTE, CÓDIGO PÓLIZA...">
+                        <button class="clear-search" data-search="pagos"><i class="fas fa-times-circle"></i></button>
+                    </div>
+                    <select id="payment-tracking-filter" class="filter-element filter-inline">
+                        <option value="TODOS">SEGUIMIENTO: TODOS</option>
+                    </select>
+                    <select id="payment-pdf-filter" class="filter-element filter-inline">
+                        <option value="TODOS">DECLARACION: TODOS</option>
+                    </select>
+                    <select id="payment-status-filter" class="filter-element filter-inline">
+                        <option value="TODOS">TODOS LOS ESTATUS</option>
                     </select>
                 </div>
             </div>
@@ -926,43 +1174,13 @@
                     <thead>
                         <tr>
                             <th class="text-center" style="width: 50px;"></th>
-                            <th class="text-left">CÓDIGO PÓLIZA</th>
                             <th class="text-left">CLIENTE</th>
-                            <th class="text-right">NAP</th>
-                            <th class="text-right">COMISIÓN</th>
+                            <th class="text-left">CÓDIGO PÓLIZA</th>
+                            <th class="text-left">ID PRODUCTO</th>
+                            <th class="text-left">PAGADO HASTA</th>
                             <th class="text-center">ESTATUS</th>
                         </tr>
                     </thead>
-                    <tbody id="tbody-comisiones"></tbody>
-                </table>
-            </div>
-            <div id="comisiones-btn-container" class="btn-group-expand"></div>
-        </div>
-
-        <div class="section-separator">💰 Seguimiento Pagos</div>
-        <div class="block-table-card">
-            <div class="table-toolbar-top">
-                <h3><i class="fa-solid fa-credit-card"></i> Seguimiento Pagos</h3>
-                <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
-                    <div class="search-wrapper" style="width: auto; min-width: 180px;">
-                        <i class="fas fa-search search-icon"></i>
-                        <input type="text" id="search-pagos" placeholder="Cliente, código póliza...">
-                        <button class="clear-search" data-search="pagos"><i class="fas fa-times-circle"></i></button>
-                    </div>
-                    <select id="payment-tracking-filter" class="filter-element filter-inline">
-                        <option value="TODOS">Seguimiento: Todos</option>
-                    </select>
-                    <select id="payment-month-filter" class="filter-element filter-inline">
-                        <option value="TODOS">Todos los meses</option>
-                    </select>
-                    <select id="payment-status-filter" class="filter-element filter-inline">
-                        <option value="TODOS">Todos los estatus</option>
-                    </select>
-                </div>
-            </div>
-            <div class="overflow-wrapper">
-                <table>
-                    <thead><tr><th class="text-center" style="width: 50px;"></th><th class="text-left">Cliente</th><th class="text-left">Código Póliza</th><th class="text-left">ID Producto</th><th class="text-left">Pagado</th><th class="text-center"># Transacciones</th></tr></thead>
                     <tbody id="tbody-pagos-agrupados"></tbody>
                 </table>
             </div>
@@ -984,21 +1202,171 @@
     let chartMonthly = null, chartStatus = null;
     let datePicker = null;
 
-    let polizasExpandidas = false, contratacionesExpandidas = false, jerarquiaExpandidas = false, pagosExpandidos = false, comisionesExpandidas = false;
+    const itemsPorPagina = 7;
+    let paginaActualPolizas = 1;
+    let paginaActualContrataciones = 1;
+    let paginaActualJerarquia = 1;
+    let paginaActualPagos = 1;
+    let paginaActualComisiones = 1;
+
     let selectedProducts = [];
     let allProductsList = [];
     let selectedStatuses = ['ACTIVAS', 'PENDIENTES', 'SUSPENDIDAS', 'TERMINADAS'];
 
     let comisionStatusFilter = "TODOS";
     let comisionMonthFilter = "TODOS";
-    
-    // Nuevo filtro para historial de pólizas: "TODOS", "CON", "SIN"
     let polizasComisionFilter = "TODOS";
-    
     let comisionCodesSet = new Set();
+
+    // --- Funcionalidad de notificaciones leídas ---
+    let readNotificationsKey = "read_notifications";
+    function getReadNotificationsSet() {
+        const stored = sessionStorage.getItem(readNotificationsKey);
+        return stored ? new Set(JSON.parse(stored)) : new Set();
+    }
+    function saveReadNotificationsSet(set) {
+        sessionStorage.setItem(readNotificationsKey, JSON.stringify(Array.from(set)));
+    }
+    function clearReadNotifications() {
+        sessionStorage.removeItem(readNotificationsKey);
+    }
+    // Genera un ID único por notificación (cliente + código póliza)
+    function getNotificationId(not) {
+        return `${not.cliente}|${not.codigoPoliza}`;
+    }
+    function obtenerNotificacionesSinFondo() {
+        const hoy = new Date();
+        const mesActual = hoy.getMonth();
+        const añoActual = hoy.getFullYear();
+        let mesAnterior = mesActual - 1;
+        let añoAnterior = añoActual;
+        if (mesAnterior < 0) {
+            mesAnterior = 11;
+            añoAnterior--;
+        }
+
+        const notificaciones = [];
+        for (const pago of rawPagos) {
+            const infoFecha = extraerMesAnioDesdeRegistroPDF(pago.REGISTRO_PDF);
+            if (!infoFecha) continue;
+            const mesNumero = obtenerNumeroMes(infoFecha.nombre);
+            if (mesNumero === null) continue;
+            const esMesActual = (mesNumero === mesActual && infoFecha.anio === añoActual);
+            const esMesAnterior = (mesNumero === mesAnterior && infoFecha.anio === añoAnterior);
+            if (!esMesActual && !esMesAnterior) continue;
+
+            const estatus = (pago.ESTATUS || "").toLowerCase();
+            const seguimiento = (pago.SEGUIMIENTO_PAGO || "").toLowerCase();
+            const esSinFondo = estatus.includes("sin fondo") ||
+                               seguimiento.includes("sin fondo") ||
+                               estatus.includes("fondos insuficientes") ||
+                               seguimiento.includes("falta fondo");
+            if (esSinFondo && pago.CLIENTE && pago.CODIGO_POLIZA) {
+                notificaciones.push({
+                    cliente: pago.CLIENTE,
+                    codigoPoliza: pago.CODIGO_POLIZA,
+                    fechaRegistro: pago.REGISTRO_PDF,
+                    id: getNotificationId({ cliente: pago.CLIENTE, codigoPoliza: pago.CODIGO_POLIZA })
+                });
+            }
+        }
+        // Eliminar duplicados
+        const unique = new Map();
+        for (const n of notificaciones) {
+            if (!unique.has(n.id)) unique.set(n.id, n);
+        }
+        return Array.from(unique.values());
+    }
+
+    function actualizarCampana() {
+        const todas = obtenerNotificacionesSinFondo();
+        const leidasSet = getReadNotificationsSet();
+        const noLeidas = todas.filter(n => !leidasSet.has(n.id));
+        const count = noLeidas.length;
+        const countSpan = document.getElementById("notificationCount");
+        const listContainer = document.getElementById("notificationList");
+        countSpan.innerText = count;
+        if (!listContainer) return;
+        if (todas.length === 0) {
+            listContainer.innerHTML = `<div class="notification-empty">✅ NO HAY EVENTOS RECIENTES</div>`;
+        } else {
+            listContainer.innerHTML = "";
+            todas.forEach(not => {
+                const esLeida = leidasSet.has(not.id);
+                const div = document.createElement("div");
+                div.className = `notification-item ${esLeida ? 'read' : ''}`;
+                div.innerHTML = `
+                    <i class="fa-solid fa-circle-exclamation"></i>
+                    <div class="notification-content">
+                        <div class="notification-cliente">${not.cliente.toUpperCase()}</div>
+                        <div><code class="notification-poliza">${not.codigoPoliza.toUpperCase()}</code></div>
+                        <div style="font-size:0.65rem; color:#8D99AE;">${not.fechaRegistro || ""}</div>
+                    </div>
+                `;
+                listContainer.appendChild(div);
+            });
+        }
+    }
+
+    function marcarTodasComoLeidas() {
+        const todas = obtenerNotificacionesSinFondo();
+        const leidasSet = getReadNotificationsSet();
+        for (const n of todas) {
+            leidasSet.add(n.id);
+        }
+        saveReadNotificationsSet(leidasSet);
+        actualizarCampana();
+    }
+
+    function resetearEstadoLeidas() {
+        clearReadNotifications();
+        actualizarCampana();
+    }
+    // ----------------------------------------------
 
     const formatCurrencyNoSymbol = (val) => isNaN(val) ? "0.00" : new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(val);
     const formatPercent = (val) => new Intl.NumberFormat('en-US', { style: 'percent', minimumFractionDigits: 1 }).format(val / 100);
+    
+    function getStatusBadgeClass(estatus) {
+        if (!estatus) return "pill-neutral";
+        const upper = estatus.toUpperCase();
+        if (upper === "ACTIVO" || upper === "ACTIVA" || upper === "APROBADO" || upper === "PAGADO") return "pill-active";
+        if (upper === "TERMINADO" || upper === "TERMINADA" || upper === "CANCELADA" || upper === "VENCIDO") return "pill-failed";
+        if (upper === "PENDIENTE" || upper === "CREATED - NEW") return "pill-pending";
+        return "pill-neutral";
+    }
+
+    function extraerMesAnioDesdeRegistroPDF(texto) {
+        if (!texto) return null;
+        const mesesMap = {
+            "enero": 1, "febrero": 2, "marzo": 3, "abril": 4, "mayo": 5, "junio": 6,
+            "julio": 7, "agosto": 8, "septiembre": 9, "octubre": 10, "noviembre": 11, "diciembre": 12
+        };
+        const lower = texto.toLowerCase().trim();
+        let mesEncontrado = null;
+        for (const [nombre, num] of Object.entries(mesesMap)) {
+            if (lower.includes(nombre)) {
+                mesEncontrado = nombre;
+                break;
+            }
+        }
+        if (!mesEncontrado) return null;
+        let anio = null;
+        const matchAnio = lower.match(/\b(20\d{2})\b/);
+        if (matchAnio) {
+            anio = parseInt(matchAnio[1]);
+        } else {
+            if (mesEncontrado === "noviembre" || mesEncontrado === "diciembre") anio = 2025;
+            else anio = 2026;
+        }
+        const mesCapitalizado = mesEncontrado.charAt(0).toUpperCase() + mesEncontrado.slice(1);
+        return { nombre: mesCapitalizado, anio, key: `${mesCapitalizado} ${anio}` };
+    }
+
+    function obtenerNumeroMes(nombreMes) {
+        const meses = { "Enero":0, "Febrero":1, "Marzo":2, "Abril":3, "Mayo":4, "Junio":5, "Julio":6, "Agosto":7, "Septiembre":8, "Octubre":9, "Noviembre":10, "Diciembre":11 };
+        return meses[nombreMes] !== undefined ? meses[nombreMes] : null;
+    }
 
     async function fetchWithRetry(url, retries = 3, delay = 1000) {
         for (let i = 0; i < retries; i++) {
@@ -1019,165 +1387,108 @@
         initClearButtons();
         initProductDropdown();
         initStatusDropdown();
-    });
-
-    function initControls() {
-        datePicker = flatpickr("#date-range-picker", { mode: "range", dateFormat: "Y-m-d", locale: "es", onChange: () => { resetearExpansiones(); aplicarFiltros(); } });
-        document.getElementById("agent-filter").addEventListener("change", () => { aplicarFiltros(); renderTablaJerarquia(); renderTablaPagosAgrupados(); renderTablaComisiones(); });
-        document.getElementById("payment-tracking-filter").addEventListener("change", () => { pagosExpandidos = false; renderTablaPagosAgrupados(); });
-        document.getElementById("payment-month-filter").addEventListener("change", () => { pagosExpandidos = false; renderTablaPagosAgrupados(); });
-        document.getElementById("payment-status-filter").addEventListener("change", () => { pagosExpandidos = false; renderTablaPagosAgrupados(); });
-        document.getElementById("search-polizas").addEventListener("input", () => { polizasExpandidas = false; renderTablaPolizasDetalle(); });
-        document.getElementById("search-contrataciones").addEventListener("input", () => { contratacionesExpandidas = false; renderTablaContrataciones(); });
-        document.getElementById("search-jerarquia").addEventListener("input", () => { jerarquiaExpandidas = false; renderTablaJerarquia(); });
-        document.getElementById("search-pagos").addEventListener("input", () => { pagosExpandidos = false; renderTablaPagosAgrupados(); });
-        document.getElementById("search-comisiones").addEventListener("input", () => { comisionesExpandidas = false; renderTablaComisiones(); });
-        
-        document.getElementById("comision-status-filter").addEventListener("change", (e) => { comisionStatusFilter = e.target.value; comisionesExpandidas = false; renderTablaComisiones(); });
-        document.getElementById("comision-month-filter").addEventListener("change", (e) => { comisionMonthFilter = e.target.value; comisionesExpandidas = false; renderTablaComisiones(); });
-        
-        // Nuevo filtro de comisión para historial de pólizas
-        const polizasComisionSelect = document.getElementById("polizas-comision-filter");
-        if (polizasComisionSelect) {
-            polizasComisionSelect.addEventListener("change", (e) => {
-                polizasComisionFilter = e.target.value;
-                polizasExpandidas = false;
-                renderTablaPolizasDetalle();
+        // Campana eventos
+        const bellBtn = document.getElementById("bellButton");
+        const panel = document.getElementById("notificationPanel");
+        const closeBtn = document.getElementById("closePanelBtn");
+        const markReadBtn = document.getElementById("markReadBtn");
+        if (bellBtn && panel && closeBtn) {
+            bellBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                panel.classList.toggle("hidden");
+            });
+            closeBtn.addEventListener("click", () => {
+                panel.classList.add("hidden");
+            });
+            document.addEventListener("click", function(e) {
+                if (!panel.contains(e.target) && !bellBtn.contains(e.target)) {
+                    panel.classList.add("hidden");
+                }
             });
         }
+        if (markReadBtn) {
+            markReadBtn.addEventListener("click", () => {
+                marcarTodasComoLeidas();
+            });
+        }
+    });
 
+    function resetearPaginacionTotal() {
+        paginaActualPolizas = 1;
+        paginaActualContrataciones = 1;
+        paginaActualJerarquia = 1;
+        paginaActualPagos = 1;
+        paginaActualComisiones = 1;
+    }
+
+    function initControls() {
+        datePicker = flatpickr("#date-range-picker", { mode: "range", dateFormat: "Y-m-d", locale: "es", onChange: () => { resetearPaginacionTotal(); aplicarFiltros(); } });
+        document.getElementById("agent-filter").addEventListener("change", () => { resetearPaginacionTotal(); aplicarFiltros(); renderTablaJerarquia(); renderTablaPagosAgrupados(); renderTablaComisiones(); });
+        document.getElementById("payment-tracking-filter").addEventListener("change", () => { paginaActualPagos = 1; renderTablaPagosAgrupados(); });
+        document.getElementById("payment-status-filter").addEventListener("change", () => { paginaActualPagos = 1; renderTablaPagosAgrupados(); });
+        document.getElementById("payment-pdf-filter").addEventListener("change", () => { paginaActualPagos = 1; renderTablaPagosAgrupados(); });
+        document.getElementById("search-polizas").addEventListener("input", () => { paginaActualPolizas = 1; renderTablaPolizasDetalle(); });
+        document.getElementById("search-contrataciones").addEventListener("input", () => { paginaActualContrataciones = 1; renderTablaContrataciones(); });
+        document.getElementById("search-jerarquia").addEventListener("input", () => { paginaActualJerarquia = 1; renderTablaJerarquia(); });
+        document.getElementById("search-pagos").addEventListener("input", () => { paginaActualPagos = 1; renderTablaPagosAgrupados(); });
+        document.getElementById("search-comisiones").addEventListener("input", () => { paginaActualComisiones = 1; renderTablaComisiones(); });
+        document.getElementById("comision-status-filter").addEventListener("change", (e) => { comisionStatusFilter = e.target.value; paginaActualComisiones = 1; renderTablaComisiones(); });
+        document.getElementById("comision-month-filter").addEventListener("change", (e) => { comisionMonthFilter = e.target.value; paginaActualComisiones = 1; renderTablaComisiones(); });
+        const polizasComisionSelect = document.getElementById("polizas-comision-filter");
+        if (polizasComisionSelect) polizasComisionSelect.addEventListener("change", (e) => { polizasComisionFilter = e.target.value; paginaActualPolizas = 1; renderTablaPolizasDetalle(); });
         document.getElementById("btn-clear-filters").addEventListener("click", () => {
             selectedStatuses = ['ACTIVAS', 'PENDIENTES', 'SUSPENDIDAS', 'TERMINADAS'];
-            updateStatusDropdownText();
-            renderStatusCheckboxes();
-            selectedProducts = [...allProductsList];
-            updateProductDropdownText();
-            renderProductCheckboxes();
+            updateStatusDropdownText(); renderStatusCheckboxes();
+            selectedProducts = [...allProductsList]; updateProductDropdownText(); renderProductCheckboxes();
             document.getElementById("agent-filter").value = "TODOS";
             document.getElementById("payment-tracking-filter").value = "TODOS";
-            document.getElementById("payment-month-filter").value = "TODOS";
             document.getElementById("payment-status-filter").value = "TODOS";
+            document.getElementById("payment-pdf-filter").value = "TODOS";
             document.getElementById("comision-status-filter").value = "TODOS";
             document.getElementById("comision-month-filter").value = "TODOS";
-            // Resetear filtro de comisión en historial
-            if (document.getElementById("polizas-comision-filter")) {
-                document.getElementById("polizas-comision-filter").value = "TODOS";
-                polizasComisionFilter = "TODOS";
-            }
-            comisionStatusFilter = "TODOS";
-            comisionMonthFilter = "TODOS";
-            datePicker.clear();
-            resetearExpansiones();
+            if (document.getElementById("polizas-comision-filter")) { document.getElementById("polizas-comision-filter").value = "TODOS"; polizasComisionFilter = "TODOS"; }
+            comisionStatusFilter = "TODOS"; comisionMonthFilter = "TODOS";
+            datePicker.clear(); resetearPaginacionTotal();
             if (rawProduccion.length) establecerRangoFechaDefault();
-            aplicarFiltros();
-            renderTablaJerarquia();
-            renderTablaPagosAgrupados();
-            renderTablaComisiones();
+            aplicarFiltros(); renderTablaJerarquia(); renderTablaPagosAgrupados(); renderTablaComisiones();
         });
         document.getElementById("btn-refresh-data").addEventListener("click", async () => { await cargarFuentesExternas(); });
     }
 
     function initClearButtons() {
         document.querySelectorAll('.clear-search').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const searchId = btn.getAttribute('data-search');
-                const input = document.getElementById(`search-${searchId}`);
-                if (input) { input.value = ''; input.dispatchEvent(new Event('input')); }
-            });
-            const inputId = btn.getAttribute('data-search');
-            const input = document.getElementById(`search-${inputId}`);
-            if (input) {
-                const toggle = () => { btn.style.display = input.value.length > 0 ? 'block' : 'none'; };
-                input.addEventListener('input', toggle);
-                toggle();
-            }
+            btn.addEventListener('click', (e) => { const searchId = btn.getAttribute('data-search'); const input = document.getElementById(`search-${searchId}`); if (input) { input.value = ''; input.dispatchEvent(new Event('input')); } });
+            const inputId = btn.getAttribute('data-search'); const input = document.getElementById(`search-${inputId}`);
+            if (input) { const toggle = () => { btn.style.display = input.value.length > 0 ? 'block' : 'none'; }; input.addEventListener('input', toggle); toggle(); }
         });
     }
 
-    function initProductDropdown() {
-        const btn = document.getElementById('product-dropdown-btn');
-        const panel = document.getElementById('product-dropdown-panel');
-        btn.addEventListener('click', (e) => { e.stopPropagation(); panel.classList.toggle('show'); });
-        document.addEventListener('click', function(e) { if (!btn.contains(e.target) && !panel.contains(e.target)) panel.classList.remove('show'); });
-    }
-
-    function initStatusDropdown() {
-        const btn = document.getElementById('status-dropdown-btn');
-        const panel = document.getElementById('status-dropdown-panel');
-        btn.addEventListener('click', (e) => { e.stopPropagation(); panel.classList.toggle('show'); });
-        document.addEventListener('click', function(e) { if (!btn.contains(e.target) && !panel.contains(e.target)) panel.classList.remove('show'); });
-    }
+    function initProductDropdown() { const btn = document.getElementById('product-dropdown-btn'); const panel = document.getElementById('product-dropdown-panel'); btn.addEventListener('click', (e) => { e.stopPropagation(); panel.classList.toggle('show'); }); document.addEventListener('click', function(e) { if (!btn.contains(e.target) && !panel.contains(e.target)) panel.classList.remove('show'); }); }
+    function initStatusDropdown() { const btn = document.getElementById('status-dropdown-btn'); const panel = document.getElementById('status-dropdown-panel'); btn.addEventListener('click', (e) => { e.stopPropagation(); panel.classList.toggle('show'); }); document.addEventListener('click', function(e) { if (!btn.contains(e.target) && !panel.contains(e.target)) panel.classList.remove('show'); }); }
 
     function renderProductCheckboxes() {
-        const panel = document.getElementById('product-dropdown-panel');
-        if (!panel) return;
-        if (allProductsList.length === 0) { panel.innerHTML = '<div class="checkbox-option" style="justify-content:center;">Sin productos</div>'; return; }
-        let html = '';
-        allProductsList.forEach(prod => {
-            const checked = selectedProducts.includes(prod) ? 'checked' : '';
-            html += `<div class="checkbox-option"><input type="checkbox" value="${prod.replace(/"/g, '&quot;')}" ${checked}> <label>${prod}</label></div>`;
-        });
+        const panel = document.getElementById('product-dropdown-panel'); if (!panel) return;
+        if (allProductsList.length === 0) { panel.innerHTML = '<div class="checkbox-option" style="justify-content:center;">SIN PRODUCTOS</div>'; return; }
+        let html = ''; allProductsList.forEach(prod => { const checked = selectedProducts.includes(prod) ? 'checked' : ''; html += `<div class="checkbox-option"><input type="checkbox" value="${prod.replace(/"/g, '&quot;')}" ${checked}> <label>${prod}</label></div>`; });
         panel.innerHTML = html;
-        document.querySelectorAll('#product-dropdown-panel .checkbox-option input[type="checkbox"]').forEach(ch => {
-            ch.addEventListener('change', (e) => {
-                const val = e.target.value;
-                if (e.target.checked) { if (!selectedProducts.includes(val)) selectedProducts.push(val); }
-                else { selectedProducts = selectedProducts.filter(p => p !== val); }
-                updateProductDropdownText();
-                aplicarFiltros();
-            });
-        });
+        document.querySelectorAll('#product-dropdown-panel .checkbox-option input[type="checkbox"]').forEach(ch => { ch.addEventListener('change', (e) => { const val = e.target.value; if (e.target.checked) { if (!selectedProducts.includes(val)) selectedProducts.push(val); } else { selectedProducts = selectedProducts.filter(p => p !== val); } updateProductDropdownText(); resetearPaginacionTotal(); aplicarFiltros(); }); });
     }
 
     function renderStatusCheckboxes() {
-        const panel = document.getElementById('status-dropdown-panel');
-        if (!panel) return;
+        const panel = document.getElementById('status-dropdown-panel'); if (!panel) return;
         const estados = ['ACTIVAS', 'PENDIENTES', 'SUSPENDIDAS', 'TERMINADAS'];
-        let html = '';
-        estados.forEach(est => {
-            const checked = selectedStatuses.includes(est) ? 'checked' : '';
-            html += `<div class="checkbox-option"><input type="checkbox" value="${est}" ${checked}> <label>${est}</label></div>`;
-        });
+        let html = ''; estados.forEach(est => { const checked = selectedStatuses.includes(est) ? 'checked' : ''; html += `<div class="checkbox-option"><input type="checkbox" value="${est}" ${checked}> <label>${est}</label></div>`; });
         panel.innerHTML = html;
-        document.querySelectorAll('#status-dropdown-panel .checkbox-option input[type="checkbox"]').forEach(ch => {
-            ch.addEventListener('change', (e) => {
-                const val = e.target.value;
-                if (e.target.checked) { if (!selectedStatuses.includes(val)) selectedStatuses.push(val); }
-                else { selectedStatuses = selectedStatuses.filter(s => s !== val); }
-                updateStatusDropdownText();
-                aplicarFiltros();
-            });
-        });
+        document.querySelectorAll('#status-dropdown-panel .checkbox-option input[type="checkbox"]').forEach(ch => { ch.addEventListener('change', (e) => { const val = e.target.value; if (e.target.checked) { if (!selectedStatuses.includes(val)) selectedStatuses.push(val); } else { selectedStatuses = selectedStatuses.filter(s => s !== val); } updateStatusDropdownText(); resetearPaginacionTotal(); aplicarFiltros(); }); });
     }
 
-    function updateProductDropdownText() {
-        const span = document.getElementById('product-selected-text');
-        if (!span) return;
-        if (selectedProducts.length === 0) span.textContent = 'Ningún producto';
-        else if (selectedProducts.length === 1) span.textContent = selectedProducts[0];
-        else if (selectedProducts.length === allProductsList.length && allProductsList.length > 0) span.textContent = 'Todos los productos';
-        else span.textContent = `${selectedProducts.length} productos seleccionados`;
-    }
-
-    function updateStatusDropdownText() {
-        const span = document.getElementById('status-selected-text');
-        if (!span) return;
-        if (selectedStatuses.length === 0) span.textContent = 'Ningún estado';
-        else if (selectedStatuses.length === 4) span.textContent = 'Todos los estados';
-        else span.textContent = `${selectedStatuses.length} estados seleccionados`;
-    }
-
-    function resetearExpansiones() { polizasExpandidas = contratacionesExpandidas = jerarquiaExpandidas = pagosExpandidos = comisionesExpandidas = false; }
+    function updateProductDropdownText() { const span = document.getElementById('product-selected-text'); if (!span) return; if (selectedProducts.length === 0) span.textContent = 'NINGÚN PRODUCTO'; else if (selectedProducts.length === 1) span.textContent = selectedProducts[0].toUpperCase(); else if (selectedProducts.length === allProductsList.length && allProductsList.length > 0) span.textContent = 'TODOS LOS PRODUCTOS'; else span.textContent = `${selectedProducts.length} PRODUCTOS SELECCIONADOS`; }
+    function updateStatusDropdownText() { const span = document.getElementById('status-selected-text'); if (!span) return; if (selectedStatuses.length === 0) span.textContent = 'NINGÚN ESTADO'; else if (selectedStatuses.length === 4) span.textContent = 'TODOS LOS ESTADOS'; else span.textContent = `${selectedStatuses.length} ESTADOS SELECCIONADOS`; }
 
     async function cargarFuentesExternas() {
         try {
-            showLoader(true);
-            ocultarError();
-            const [textProd, textCont, textJer, textPagos, textComisiones] = await Promise.all([
-                fetchWithRetry(URL_PRODUCCION), fetchWithRetry(URL_CONTRATACION),
-                fetchWithRetry(URL_JERARQUIA), fetchWithRetry(URL_PAGOS),
-                fetchWithRetry(URL_COMISIONES)
-            ]);
+            showLoader(true); ocultarError();
+            const [textProd, textCont, textJer, textPagos, textComisiones] = await Promise.all([fetchWithRetry(URL_PRODUCCION), fetchWithRetry(URL_CONTRATACION), fetchWithRetry(URL_JERARQUIA), fetchWithRetry(URL_PAGOS), fetchWithRetry(URL_COMISIONES)]);
             rawProduccion = parseCSVProduccion(textProd);
             rawContratacion = parseCSVContratacion(textCont);
             rawJerarquia = parseCSVJerarquia(textJer);
@@ -1188,195 +1499,36 @@
             poblarFiltrosPagos();
             poblarFiltrosComisiones();
             establecerRangoFechaDefault();
+            // Resetear notificaciones leídas al cargar nuevos datos
+            resetearEstadoLeidas();
             aplicarFiltros();
             renderTablaContrataciones();
             renderTablaJerarquia();
             renderTablaPagosAgrupados();
             renderTablaComisiones();
-        } catch (err) { console.error(err); mostrarErrorGlobal(); cargarDatosMock(); }
+            actualizarCampana();
+        } catch (err) { 
+            console.error(err); 
+            mostrarErrorGlobal();
+            rawProduccion = []; rawContratacion = []; rawJerarquia = []; rawPagos = []; rawComisiones = [];
+            filteredProduccion = [];
+            actualizarKPIs(); renderGraficos(); renderTopAgentes(); renderTablaProductosShare(); renderPersistenciaGlobal();
+            renderTablaPolizasDetalle(); renderTablaContrataciones(); renderTablaJerarquia(); renderTablaPagosAgrupados(); renderTablaComisiones();
+            actualizarCampana();
+        }
         finally { showLoader(false); }
     }
 
-    function actualizarComisionCodesSet() {
-        comisionCodesSet.clear();
-        if (rawComisiones && rawComisiones.length) {
-            rawComisiones.forEach(c => {
-                if (c.CODIGO_POLIZA && c.CODIGO_POLIZA.trim() !== "") {
-                    comisionCodesSet.add(c.CODIGO_POLIZA.trim());
-                }
-            });
-        }
-    }
+    function actualizarComisionCodesSet() { comisionCodesSet.clear(); if (rawComisiones && rawComisiones.length) rawComisiones.forEach(c => { if (c.CODIGO_POLIZA && c.CODIGO_POLIZA.trim() !== "") comisionCodesSet.add(c.CODIGO_POLIZA.trim()); }); }
 
-    function cargarDatosMock() {
-        rawProduccion = [
-            { AGENTE: "Carlos López", PRODUCTO: "Vida", PRIMA_NAP: "1500", CODIGO_POLIZA: "POL001", EMISION: "2025-01-15", ACTIVACION: "2025-01-20", ESTATUS: "Activa", ESTADO: "Florida", CLIENTE: "Juan Pérez", DIRECCION: "Calle 123", CIUDAD: "Miami", ZIP_CODE: "33101", TELEFONO: "305-555-1234", ID_PRODUCER: "ID001" },
-            { AGENTE: "María Gómez", PRODUCTO: "Salud", PRIMA_NAP: "2500", CODIGO_POLIZA: "POL002", EMISION: "2025-02-10", ACTIVACION: "2025-02-15", ESTATUS: "Activa", ESTADO: "Texas", CLIENTE: "Ana Rodríguez", DIRECCION: "Avenida 456", CIUDAD: "Houston", ZIP_CODE: "77001", TELEFONO: "713-555-5678", ID_PRODUCER: "ID002" },
-            { AGENTE: "Carlos López", PRODUCTO: "Auto", PRIMA_NAP: "800", CODIGO_POLIZA: "POL003", EMISION: "2025-01-20", ACTIVACION: "2025-01-25", ESTATUS: "Pendiente", ESTADO: "California", CLIENTE: "Roberto Sánchez", DIRECCION: "Boulevard 789", CIUDAD: "Los Ángeles", ZIP_CODE: "90001", TELEFONO: "213-555-9012", ID_PRODUCER: "ID001" },
-            { AGENTE: "Ana Rodríguez", PRODUCTO: "Accident", PRIMA_NAP: "1200", CODIGO_POLIZA: "POL004", EMISION: "2025-03-01", ACTIVACION: "2025-03-05", ESTATUS: "Activa", ESTADO: "Nevada", CLIENTE: "Luis Pérez", DIRECCION: "Calle Sol", CIUDAD: "Las Vegas", ZIP_CODE: "89101", TELEFONO: "702-555-1111", ID_PRODUCER: "ID003" },
-            { AGENTE: "María Gómez", PRODUCTO: "Cancer", PRIMA_NAP: "1800", CODIGO_POLIZA: "POL005", EMISION: "2025-03-10", ACTIVACION: "2025-03-15", ESTATUS: "Activa", ESTADO: "Texas", CLIENTE: "Laura Fernández", DIRECCION: "Av. Principal", CIUDAD: "Dallas", ZIP_CODE: "75201", TELEFONO: "214-555-2222", ID_PRODUCER: "ID002" }
-        ];
-        rawContratacion = [
-            { AGENTE: "Carlos López", FECHA_CREACION: "2025-01-01", TIPO_PROCESO: "Onboarding", ESTATUS: "APROBADO", UPLINE: "Directo", CODIGO_NIVEL: "N1" },
-            { AGENTE: "María Gómez", FECHA_CREACION: "2025-02-15", TIPO_PROCESO: "Renovación", ESTATUS: "CREATED - NEW", UPLINE: "Regional", CODIGO_NIVEL: "N2" }
-        ];
-        rawJerarquia = [
-            { AGENTE: "Carlos López", NPN_AGENTE: "NPN123", ID_PRODUCER: "ID001", FECHA_INGRESO: "2025-01-01", CODIGO_NIVEL: "1", NPN_UPLINE: "NPN000", UPLINE: "Admin" },
-            { AGENTE: "María Gómez", NPN_AGENTE: "NPN456", ID_PRODUCER: "ID002", FECHA_INGRESO: "2025-02-10", CODIGO_NIVEL: "2", NPN_UPLINE: "NPN123", UPLINE: "Carlos López" }
-        ];
-        rawPagos = [
-            { CLIENTE: "Juan Pérez", CODIGO_POLIZA: "POL001", ID_PRODUCTO: "VIDA01", PAGADO_HASTA: "2025-02-28", SEGUIMIENTO_PAGO: "Al día", ESTATUS: "Pagado", METODO_PAGO: "Transferencia", PRIMA: "1500" },
-            { CLIENTE: "Ana Rodríguez", CODIGO_POLIZA: "POL002", ID_PRODUCTO: "SALUD02", PAGADO_HASTA: "2025-03-15", SEGUIMIENTO_PAGO: "Al día", ESTATUS: "Pagado", METODO_PAGO: "Tarjeta", PRIMA: "2500" }
-        ];
-        rawComisiones = [
-            { CODIGO_POLIZA: "POL001", ID_PRODUCTO: "DVH25BV600", CLIENTE: "LISDELMIS TEJEDOR PEREZ", ESTATUS: "ACTIVA", ACTIVACION: "12/1/2025", ESTADO: "FL", METODO_PAGO: "MON", NAP: "467.88", PORC_COMISION: "30%", ADVANCE: "$105.27", COMISION_POLIZA: "" },
-            { CODIGO_POLIZA: "POL003", ID_PRODUCTO: "DVH25BV600", CLIENTE: "MARITRYNI REMEDIOS ROMERO", ESTATUS: "ACTIVA", ACTIVACION: "12/1/2025", ESTADO: "FL", METODO_PAGO: "MON", NAP: "610.08", PORC_COMISION: "30%", ADVANCE: "$137.26", COMISION_POLIZA: "" }
-        ];
-        actualizarComisionCodesSet();
-        poblarFiltrosDinamicos();
-        poblarFiltrosPagos();
-        poblarFiltrosComisiones();
-        establecerRangoFechaDefault();
-        aplicarFiltros();
-        renderTablaContrataciones();
-        renderTablaJerarquia();
-        renderTablaPagosAgrupados();
-        renderTablaComisiones();
-    }
+    // Funciones de parseo (sin cambios)
+    function parseCSVGeneral(csvText) { const rows = []; let inQuote = false, row = [], field = ""; for (let i = 0; i < csvText.length; i++) { const ch = csvText[i], next = csvText[i+1]; if (ch === '"') { if (inQuote && next === '"') { field += '"'; i++; } else inQuote = !inQuote; } else if (ch === ',' && !inQuote) { row.push(field); field = ""; } else if ((ch === '\n' || ch === '\r') && !inQuote) { if (ch === '\r' && next === '\n') i++; row.push(field); if (row.length > 1 || row[0] !== "") rows.push(row); row = []; field = ""; } else { field += ch; } } if (field || row.length) { row.push(field); if (row.length > 1 || row[0] !== "") rows.push(row); } return rows; }
+    function parseCSVProduccion(csvText) { const rows = parseCSVGeneral(csvText); if (!rows.length) return []; const headers = rows[0].map(h => h.trim()); return rows.slice(1).map(line => { const obj = {}; headers.forEach((h, idx) => { obj[h] = line[idx] ? line[idx].trim() : ""; }); return { AGENTE: obj["Agente"] || "", ID_PRODUCER: obj["ID Producer"] || "", PRODUCTO: obj["Producto"] || "", PRIMA_NAP: obj["Prima NAP"] || "0", CODIGO_POLIZA: obj["Codigo Poliza"] || "", EMISION: obj["Emision"] || "", ACTIVACION: obj["Activacion"] || obj["Emision"] || "", ESTATUS: obj["Estatus"] || "", ESTADO: obj["Estado"] || "", CLIENTE: obj["Cliente"] || "", DIRECCION: obj["Direccion"] || "", CIUDAD: obj["Ciudad"] || "", ZIP_CODE: obj["Zip Code"] || "", TELEFONO: obj["Telefono"] || "" }; }); }
+    function parseCSVContratacion(csvText) { const rows = parseCSVGeneral(csvText); if (!rows.length) return []; const headers = rows[0].map(h => h.trim()); return rows.slice(1).map(line => { const obj = {}; headers.forEach((h, idx) => { obj[h] = line[idx] ? line[idx].trim() : ""; }); return { AGENTE: obj["Agente"] || "", FECHA_CREACION: obj["Fecha de Creacion"] || "", TIPO_PROCESO: obj["Tipo de Proceso"] || "", ESTATUS: obj["Estatus"] || "", UPLINE: obj["Upline"] || "", CODIGO_NIVEL: obj["Codigo Nivel %"] || "" }; }); }
+    function parseCSVJerarquia(csvText) { const rows = parseCSVGeneral(csvText); if (!rows.length) return []; const headers = rows[0].map(h => h.trim()); return rows.slice(1).map(line => { const obj = {}; headers.forEach((h, idx) => { obj[h] = line[idx] ? line[idx].trim() : ""; }); return { AGENTE: obj["Agente"] || "", NPN_AGENTE: obj["NPN Agente"] || "", ID_PRODUCER: obj["ID Producer"] || "", FECHA_INGRESO: obj["Fecha Ingreso"] || "", CODIGO_NIVEL: obj["Codigo Nivel"] || "", NPN_UPLINE: obj["NPN Upline"] || "", UPLINE: obj["Upline"] || "" }; }); }
+    function parseCSVPagos(csvText) { const rows = parseCSVGeneral(csvText); if (!rows.length) return []; const headers = rows[0].map(h => h.trim().toLowerCase()); const findCol = (patterns) => { for (let i = 0; i < headers.length; i++) if (patterns.some(p => headers[i].includes(p))) return i; return -1; }; const idxCliente = findCol(["cliente"]); const idxCodigoPoliza = findCol(["codigo poliza", "codigo_poliza", "poliza"]); const idxIdProducto = findCol(["id producto", "id_producto", "producto id"]); const idxEstatus = findCol(["estatus"]); const idxPagadoHasta = findCol(["pagado hasta", "pagado_hasta"]); const idxMetodoPago = findCol(["metodo pago", "metodo_pago", "método pago"]); const idxPrima = findCol(["prima"]); const idxSeguimiento = findCol(["seguimiento pago", "seguimiento_pago", "seguimiento"]); const idxRegistroPdf = findCol(["registro_pdf", "registro pdf", "pdf"]); return rows.slice(1).map(line => { const get = (idx) => (idx !== -1 && line[idx]) ? line[idx].trim() : ""; return { CLIENTE: get(idxCliente), CODIGO_POLIZA: get(idxCodigoPoliza), ID_PRODUCTO: get(idxIdProducto), ESTATUS: get(idxEstatus), PAGADO_HASTA: get(idxPagadoHasta), METODO_PAGO: get(idxMetodoPago), PRIMA: get(idxPrima), SEGUIMIENTO_PAGO: get(idxSeguimiento), REGISTRO_PDF: get(idxRegistroPdf) }; }); }
+    function parseCSVComisiones(csvText) { const rows = parseCSVGeneral(csvText); if (!rows.length) return []; const headers = rows[0].map(h => h.trim()); function normalizar(str) { return str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "_"); } const normalizados = headers.map(normalizar); function encontrarIndice(palabrasClave) { for (let i = 0; i < normalizados.length; i++) for (const kw of palabrasClave) if (normalizados[i].includes(kw)) return i; return -1; } const idxMap = {}; let idx = encontrarIndice(["codigo_de_poliza", "codigo_poliza", "poliza"]); if (idx !== -1) idxMap.CODIGO_POLIZA = idx; idx = encontrarIndice(["id_producto", "producto_id"]); if (idx !== -1) idxMap.ID_PRODUCTO = idx; idx = encontrarIndice(["cliente"]); if (idx !== -1) idxMap.CLIENTE = idx; idx = encontrarIndice(["estatus"]); if (idx !== -1) idxMap.ESTATUS = idx; idx = encontrarIndice(["activacion"]); if (idx !== -1) idxMap.ACTIVACION = idx; idx = encontrarIndice(["estado"]); if (idx !== -1) idxMap.ESTADO = idx; idx = encontrarIndice(["metodo_pago", "pago"]); if (idx !== -1) idxMap.METODO_PAGO = idx; idx = encontrarIndice(["nap", "hap"]); if (idx !== -1) idxMap.NAP = idx; let porcIdx = -1; for (let i = 0; i < headers.length; i++) { const original = headers[i].toLowerCase(); if ((original.includes("comision") || original.includes("comisión")) && original.includes("%")) { porcIdx = i; break; } } if (porcIdx === -1) porcIdx = encontrarIndice(["porc_comision", "comision"]); if (porcIdx !== -1) idxMap.PORC_COMISION = porcIdx; idx = encontrarIndice(["advance"]); if (idx !== -1) idxMap.ADVANCE = idx; idx = encontrarIndice(["comision_de_la_poliza", "comision_poliza"]); if (idx !== -1) idxMap.COMISION_POLIZA = idx; return rows.slice(1).map(line => { const obj = {}; for (const [claveInterna, idx] of Object.entries(idxMap)) obj[claveInterna] = line[idx] ? line[idx].trim() : ""; return obj; }); }
 
-    // ==================== PARSEO GENERAL ====================
-    function parseCSVGeneral(csvText) {
-        const rows = []; let inQuote = false, row = [], field = "";
-        for (let i = 0; i < csvText.length; i++) {
-            const ch = csvText[i], next = csvText[i+1];
-            if (ch === '"') { if (inQuote && next === '"') { field += '"'; i++; } else inQuote = !inQuote; }
-            else if (ch === ',' && !inQuote) { row.push(field); field = ""; }
-            else if ((ch === '\n' || ch === '\r') && !inQuote) {
-                if (ch === '\r' && next === '\n') i++;
-                row.push(field);
-                if (row.length > 1 || row[0] !== "") rows.push(row);
-                row = []; field = "";
-            } else { field += ch; }
-        }
-        if (field || row.length) { row.push(field); if (row.length > 1 || row[0] !== "") rows.push(row); }
-        return rows;
-    }
-
-    function parseCSVProduccion(csvText) {
-        const rows = parseCSVGeneral(csvText);
-        if (!rows.length) return [];
-        const headers = rows[0].map(h => h.trim());
-        return rows.slice(1).map(line => {
-            const obj = {}; headers.forEach((h, idx) => { obj[h] = line[idx] ? line[idx].trim() : ""; });
-            return { AGENTE: obj["Agente"] || "", ID_PRODUCER: obj["ID Producer"] || "", PRODUCTO: obj["Producto"] || "", PRIMA_NAP: obj["Prima NAP"] || "0", CODIGO_POLIZA: obj["Codigo Poliza"] || "", EMISION: obj["Emision"] || "", ACTIVACION: obj["Activacion"] || obj["Emision"] || "", ESTATUS: obj["Estatus"] || "", ESTADO: obj["Estado"] || "", CLIENTE: obj["Cliente"] || "", DIRECCION: obj["Direccion"] || "", CIUDAD: obj["Ciudad"] || "", ZIP_CODE: obj["Zip Code"] || "", TELEFONO: obj["Telefono"] || "" };
-        });
-    }
-
-    function parseCSVContratacion(csvText) {
-        const rows = parseCSVGeneral(csvText);
-        if (!rows.length) return [];
-        const headers = rows[0].map(h => h.trim());
-        return rows.slice(1).map(line => {
-            const obj = {}; headers.forEach((h, idx) => { obj[h] = line[idx] ? line[idx].trim() : ""; });
-            return { AGENTE: obj["Agente"] || "", FECHA_CREACION: obj["Fecha de Creacion"] || "", TIPO_PROCESO: obj["Tipo de Proceso"] || "", ESTATUS: obj["Estatus"] || "", UPLINE: obj["Upline"] || "", CODIGO_NIVEL: obj["Codigo Nivel %"] || "" };
-        });
-    }
-
-    function parseCSVJerarquia(csvText) {
-        const rows = parseCSVGeneral(csvText);
-        if (!rows.length) return [];
-        const headers = rows[0].map(h => h.trim());
-        return rows.slice(1).map(line => {
-            const obj = {}; headers.forEach((h, idx) => { obj[h] = line[idx] ? line[idx].trim() : ""; });
-            return { AGENTE: obj["Agente"] || "", NPN_AGENTE: obj["NPN Agente"] || "", ID_PRODUCER: obj["ID Producer"] || "", FECHA_INGRESO: obj["Fecha Ingreso"] || "", CODIGO_NIVEL: obj["Codigo Nivel"] || "", NPN_UPLINE: obj["NPN Upline"] || "", UPLINE: obj["Upline"] || "" };
-        });
-    }
-
-    function parseCSVPagos(csvText) {
-        const rows = parseCSVGeneral(csvText);
-        if (!rows.length) return [];
-        const headers = rows[0].map(h => h.trim());
-        return rows.slice(1).map(line => {
-            const obj = {}; headers.forEach((h, idx) => { obj[h] = line[idx] ? line[idx].trim() : ""; });
-            return { CLIENTE: obj["Cliente"] || "", CODIGO_POLIZA: obj["Codigo Poliza"] || "", ID_PRODUCTO: obj["ID Producto"] || "", ESTATUS: obj["Estatus"] || "", PAGADO_HASTA: obj["Pagado Hasta"] || "", METODO_PAGO: obj["Metodo Pago"] || "", PRIMA: obj["Prima"] || "0", SEGUIMIENTO_PAGO: obj["Seguimiento Pago"] || "" };
-        });
-    }
-
-    function parseCSVComisiones(csvText) {
-        const rows = parseCSVGeneral(csvText);
-        if (!rows.length) return [];
-        const headers = rows[0].map(h => h.trim());
-        
-        function normalizar(str) {
-            return str.toLowerCase()
-                .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-                .replace(/[^a-z0-9]/g, "_");
-        }
-        
-        const normalizados = headers.map(normalizar);
-        
-        function encontrarIndice(palabrasClave) {
-            for (let i = 0; i < normalizados.length; i++) {
-                for (const kw of palabrasClave) {
-                    if (normalizados[i].includes(kw)) return i;
-                }
-            }
-            return -1;
-        }
-        
-        const idxMap = {};
-        
-        let idx = encontrarIndice(["codigo_de_poliza", "codigo_poliza", "poliza"]);
-        if (idx !== -1) idxMap.CODIGO_POLIZA = idx;
-        
-        idx = encontrarIndice(["id_producto", "producto_id"]);
-        if (idx !== -1) idxMap.ID_PRODUCTO = idx;
-        
-        idx = encontrarIndice(["cliente"]);
-        if (idx !== -1) idxMap.CLIENTE = idx;
-        
-        idx = encontrarIndice(["estatus"]);
-        if (idx !== -1) idxMap.ESTATUS = idx;
-        
-        idx = encontrarIndice(["activacion"]);
-        if (idx !== -1) idxMap.ACTIVACION = idx;
-        
-        idx = encontrarIndice(["estado"]);
-        if (idx !== -1) idxMap.ESTADO = idx;
-        
-        idx = encontrarIndice(["metodo_pago", "pago"]);
-        if (idx !== -1) idxMap.METODO_PAGO = idx;
-        
-        idx = encontrarIndice(["nap", "hap"]);
-        if (idx !== -1) idxMap.NAP = idx;
-        
-        let porcIdx = -1;
-        for (let i = 0; i < headers.length; i++) {
-            const original = headers[i].toLowerCase();
-            if ((original.includes("comision") || original.includes("comisión")) && original.includes("%")) {
-                porcIdx = i;
-                break;
-            }
-        }
-        if (porcIdx === -1) porcIdx = encontrarIndice(["porc_comision", "comision"]);
-        if (porcIdx !== -1) idxMap.PORC_COMISION = porcIdx;
-        
-        idx = encontrarIndice(["advance"]);
-        if (idx !== -1) idxMap.ADVANCE = idx;
-        
-        idx = encontrarIndice(["comision_de_la_poliza", "comision_poliza"]);
-        if (idx !== -1) idxMap.COMISION_POLIZA = idx;
-        
-        return rows.slice(1).map(line => {
-            const obj = {};
-            for (const [claveInterna, idx] of Object.entries(idxMap)) {
-                obj[claveInterna] = line[idx] ? line[idx].trim() : "";
-            }
-            return obj;
-        });
-    }
-
-    // ==================== FILTROS DINÁMICOS ====================
     function poblarFiltrosDinamicos() {
         const prodSet = new Set(), agentSet = new Set();
         rawProduccion.forEach(p => { if(p.PRODUCTO) prodSet.add(p.PRODUCTO.trim()); if(p.AGENTE) agentSet.add(p.AGENTE.trim()); });
@@ -1384,490 +1536,221 @@
         selectedProducts = [...allProductsList];
         renderProductCheckboxes();
         renderStatusCheckboxes();
-        const agentSel = document.getElementById("agent-filter");
-        agentSel.innerHTML = '<option value="TODOS">Todos los Agentes</option>';
-        [...agentSet].sort().forEach(a => { let opt = document.createElement("option"); opt.value = a; opt.textContent = a; agentSel.appendChild(opt); });
+        const agentSel = document.getElementById("agent-filter"); agentSel.innerHTML = '<option value="TODOS">TODOS LOS AGENTES</option>';
+        [...agentSet].sort().forEach(a => { let opt = document.createElement("option"); opt.value = a; opt.textContent = a.toUpperCase(); agentSel.appendChild(opt); });
         updateProductDropdownText();
     }
 
     function poblarFiltrosPagos() {
         const trackingSet = new Set();
-        rawPagos.forEach(p => { if(p.SEGUIMIENTO_PAGO && p.SEGUIMIENTO_PAGO.trim()) trackingSet.add(p.SEGUIMIENTO_PAGO.trim()); });
+        rawPagos.forEach(p => { if(p.SEGUIMIENTO_PAGO && p.SEGUIMIENTO_PAGO.trim()) trackingSet.add(p.SEGUIMIENTO_PAGO.trim().toUpperCase()); });
         const trackingSel = document.getElementById("payment-tracking-filter");
-        trackingSel.innerHTML = '<option value="TODOS">Seguimiento: Todos</option>';
+        trackingSel.innerHTML = '<option value="TODOS">SEGUIMIENTO: TODOS</option>';
         [...trackingSet].sort().forEach(t => { let opt = document.createElement("option"); opt.value = t; opt.textContent = t; trackingSel.appendChild(opt); });
-
-        const monthsSet = new Set();
+        
+        const pdfMap = new Map();
         rawPagos.forEach(p => {
-            if(p.PAGADO_HASTA && p.PAGADO_HASTA.trim()) {
-                let date = new Date(p.PAGADO_HASTA);
-                if(isNaN(date)) { const parts = p.PAGADO_HASTA.split(/[-/]/); if(parts.length===3) date = new Date(parts[2], parts[1]-1, parts[0]); }
-                if(!isNaN(date)) monthsSet.add(`${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}`);
-            }
+            const info = extraerMesAnioDesdeRegistroPDF(p.REGISTRO_PDF);
+            if (info) pdfMap.set(info.key, { nombre: info.nombre, anio: info.anio });
         });
-        const monthSelect = document.getElementById("payment-month-filter");
-        monthSelect.innerHTML = '<option value="TODOS">Todos los meses</option>';
-        [...monthsSet].sort().reverse().forEach(key => {
-            const [year, month] = key.split('-');
-            let monthName = new Date(year, month-1, 1).toLocaleString('es', { month: 'long' });
-            monthName = monthName.toUpperCase();
-            const opt = document.createElement("option"); opt.value = key; opt.textContent = `${monthName} ${year}`;
-            monthSelect.appendChild(opt);
-        });
-
+        const ordenMeses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+        const pdfOptions = Array.from(pdfMap.values()).sort((a,b) => {
+            if (a.anio !== b.anio) return b.anio - a.anio;
+            return ordenMeses.indexOf(a.nombre) - ordenMeses.indexOf(b.nombre);
+        }).map(item => `${item.nombre} ${item.anio}`);
+        const pdfSel = document.getElementById("payment-pdf-filter");
+        pdfSel.innerHTML = '<option value="TODOS">DECLARACION: TODOS</option>';
+        pdfOptions.forEach(key => { const opt = document.createElement("option"); opt.value = key; opt.textContent = key.toUpperCase(); pdfSel.appendChild(opt); });
+        
         const statusSet = new Set();
-        rawPagos.forEach(p => { if(p.ESTATUS && p.ESTATUS.trim()) statusSet.add(p.ESTATUS.trim()); });
+        rawPagos.forEach(p => { if(p.ESTATUS && p.ESTATUS.trim()) statusSet.add(p.ESTATUS.trim().toUpperCase()); });
         const statusSelect = document.getElementById("payment-status-filter");
-        statusSelect.innerHTML = '<option value="TODOS">Todos los estatus</option>';
+        statusSelect.innerHTML = '<option value="TODOS">TODOS LOS ESTATUS</option>';
         [...statusSet].sort().forEach(s => { let opt = document.createElement("option"); opt.value = s; opt.textContent = s; statusSelect.appendChild(opt); });
     }
 
     function poblarFiltrosComisiones() {
-        const statusSet = new Set();
-        const monthSet = new Set();
-        rawComisiones.forEach(c => {
-            if (c.ESTATUS && c.ESTATUS.trim()) statusSet.add(c.ESTATUS.trim());
-            if (c.ACTIVACION && c.ACTIVACION.trim()) {
-                let date = new Date(c.ACTIVACION);
-                if (isNaN(date)) { const parts = c.ACTIVACION.split(/[-/]/); if (parts.length === 3) date = new Date(parts[2], parts[1]-1, parts[0]); }
-                if (!isNaN(date)) monthSet.add(`${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}`);
-            }
-        });
-        const statusSelect = document.getElementById("comision-status-filter");
-        statusSelect.innerHTML = '<option value="TODOS">Estatus: Todos</option>';
+        const statusSet = new Set(); const monthSet = new Set();
+        rawComisiones.forEach(c => { if (c.ESTATUS && c.ESTATUS.trim()) statusSet.add(c.ESTATUS.trim().toUpperCase()); if (c.ACTIVACION && c.ACTIVACION.trim()) { let date = new Date(c.ACTIVACION); if (isNaN(date)) { const parts = c.ACTIVACION.split(/[-/]/); if (parts.length === 3) date = new Date(parts[2], parts[1]-1, parts[0]); } if (!isNaN(date)) monthSet.add(`${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}`); } });
+        const statusSelect = document.getElementById("comision-status-filter"); statusSelect.innerHTML = '<option value="TODOS">ESTATUS: TODOS</option>';
         [...statusSet].sort().forEach(s => { let opt = document.createElement("option"); opt.value = s; opt.textContent = s; statusSelect.appendChild(opt); });
-        
-        const monthSelect = document.getElementById("comision-month-filter");
-        monthSelect.innerHTML = '<option value="TODOS">Mes Activación: Todos</option>';
-        [...monthSet].sort().reverse().forEach(key => {
-            const [year, month] = key.split('-');
-            let monthName = new Date(year, month-1, 1).toLocaleString('es', { month: 'long' });
-            monthName = monthName.toUpperCase();
-            const opt = document.createElement("option"); opt.value = key; opt.textContent = `${monthName} ${year}`;
-            monthSelect.appendChild(opt);
-        });
+        const monthSelect = document.getElementById("comision-month-filter"); monthSelect.innerHTML = '<option value="TODOS">MES ACTIVACIÓN: TODOS</option>';
+        [...monthSet].sort().reverse().forEach(key => { const [year, month] = key.split('-'); let monthName = new Date(year, month-1, 1).toLocaleString('es', { month: 'long' }); monthName = monthName.toUpperCase(); const opt = document.createElement("option"); opt.value = key; opt.textContent = `${monthName} ${year}`; monthSelect.appendChild(opt); });
     }
 
-    function establecerRangoFechaDefault() {
-        if (!rawProduccion.length) return;
-        const fechas = rawProduccion.map(r => new Date(r.EMISION)).filter(d => !isNaN(d));
-        if (fechas.length) datePicker.setDate([new Date(Math.min(...fechas)), new Date(Math.max(...fechas))]);
-    }
+    function establecerRangoFechaDefault() { if (!rawProduccion.length) return; const fechas = rawProduccion.map(r => new Date(r.EMISION)).filter(d => !isNaN(d)); if (fechas.length) datePicker.setDate([new Date(Math.min(...fechas)), new Date(Math.max(...fechas))]); }
 
     function aplicarFiltros() {
-        const agent = document.getElementById("agent-filter").value;
-        const [start, end] = datePicker.selectedDates;
+        const agent = document.getElementById("agent-filter").value; const [start, end] = datePicker.selectedDates;
         filteredProduccion = rawProduccion.filter(row => {
-            if (selectedStatuses.length > 0) {
-                const estatusRaw = (row.ESTATUS || "").toUpperCase();
-                let estadoMatch = false;
-                for (let sel of selectedStatuses) {
-                    if (sel === "ACTIVAS" && (estatusRaw === "ACTIVO" || estatusRaw === "ACTIVA")) { estadoMatch = true; break; }
-                    if (sel === "PENDIENTES" && estatusRaw === "PENDIENTE") { estadoMatch = true; break; }
-                    if (sel === "SUSPENDIDAS" && estatusRaw === "SUSPENDIDA") { estadoMatch = true; break; }
-                    if (sel === "TERMINADAS" && estatusRaw === "TERMINADA") { estadoMatch = true; break; }
-                }
-                if (!estadoMatch) return false;
-            }
+            if (selectedStatuses.length > 0) { const estatusRaw = (row.ESTATUS || "").toUpperCase(); let estadoMatch = false; for (let sel of selectedStatuses) { if (sel === "ACTIVAS" && (estatusRaw === "ACTIVO" || estatusRaw === "ACTIVA")) { estadoMatch = true; break; } if (sel === "PENDIENTES" && estatusRaw === "PENDIENTE") { estadoMatch = true; break; } if (sel === "SUSPENDIDAS" && estatusRaw === "SUSPENDIDA") { estadoMatch = true; break; } if (sel === "TERMINADAS" && estatusRaw === "TERMINADA") { estadoMatch = true; break; } } if (!estadoMatch) return false; }
             if (selectedProducts.length > 0 && !selectedProducts.includes(row.PRODUCTO)) return false;
             if (agent !== "TODOS" && row.AGENTE !== agent) return false;
-            if (start && end) {
-                const fecha = new Date(row.EMISION);
-                if (isNaN(fecha) || fecha < start || fecha > end) return false;
-            }
+            if (start && end) { const fecha = new Date(row.EMISION); if (isNaN(fecha) || fecha < start || fecha > end) return false; }
             return true;
         });
-        actualizarKPIs(); renderGraficos(); renderTopAgentes(); renderTablaProductosShare(); renderPersistenciaGlobal(); renderTablaPolizasDetalle(); renderTablaJerarquia(); renderTablaPagosAgrupados(); renderTablaComisiones();
+        actualizarKPIs(); renderGraficos(); renderTopAgentes(); renderTablaProductosShare(); renderPersistenciaGlobal(); 
+        renderTablaPolizasDetalle(); renderTablaJerarquia(); renderTablaPagosAgrupados(); renderTablaComisiones();
     }
 
-    function actualizarKPIs() {
-        let nap = 0; const agentes = new Set(); const estados = {};
-        filteredProduccion.forEach(r => {
-            const val = parseFloat(r.PRIMA_NAP.replace(/[^0-9.-]/g, ""));
-            if (!isNaN(val)) nap += val;
-            if (r.AGENTE) agentes.add(r.AGENTE);
-            const geo = r.ESTADO || "N/D";
-            estados[geo] = (estados[geo] || 0) + 1;
-        });
-        const topEstados = Object.entries(estados).sort((a,b)=>b[1]-a[1]).slice(0,3).map(e=>e[0]).join(", ");
-        document.getElementById("kpi-nap-total").innerText = formatCurrencyNoSymbol(nap);
-        document.getElementById("kpi-polizas-totales").innerText = filteredProduccion.length;
-        document.getElementById("kpi-agentes-activos").innerText = agentes.size;
-        document.getElementById("kpi-top-estados").innerText = topEstados || "Sin datos";
-    }
+    function actualizarKPIs() { let nap = 0; const agentes = new Set(); const estados = {}; filteredProduccion.forEach(r => { const val = parseFloat(r.PRIMA_NAP.replace(/[^0-9.-]/g, "")); if (!isNaN(val)) nap += val; if (r.AGENTE) agentes.add(r.AGENTE); const geo = r.ESTADO || "N/D"; estados[geo] = (estados[geo] || 0) + 1; }); const topEstados = Object.entries(estados).sort((a,b)=>b[1]-a[1]).slice(0,3).map(e=>e[0]).join(", "); document.getElementById("kpi-nap-total").innerText = formatCurrencyNoSymbol(nap); document.getElementById("kpi-polizas-totales").innerText = filteredProduccion.length; document.getElementById("kpi-agentes-activos").innerText = agentes.size; document.getElementById("kpi-top-estados").innerText = topEstados || "SIN DATOS"; }
+    function renderPersistenciaGlobal() { const total = filteredProduccion.length; if (total === 0) { document.getElementById("persistencia-global-label").innerText = "PERSISTENCIA GLOBAL: --%"; return; } const activas = filteredProduccion.filter(r => { const e = (r.ESTATUS || "").toUpperCase(); return e === "ACTIVO" || e === "ACTIVA"; }).length; document.getElementById("persistencia-global-label").innerHTML = `PERSISTENCIA GLOBAL: ${formatPercent((activas/total)*100)}`; }
+    function renderGraficos() { const mapa = new Map(); filteredProduccion.forEach(r => { const fecha = new Date(r.EMISION); if (!isNaN(fecha)) { const key = `${fecha.getFullYear()}-${String(fecha.getMonth()+1).padStart(2,'0')}`; const nap = parseFloat(r.PRIMA_NAP.replace(/[^0-9.-]/g, "")); if (!isNaN(nap)) mapa.set(key, (mapa.get(key)||0)+nap); } }); const sorted = [...mapa.keys()].sort(); const labels = sorted.map(k => { const [y,m]=k.split('-'); return new Date(y,m-1).toLocaleString('es',{month:'short',year:'numeric'}).toUpperCase(); }); const data = sorted.map(k => mapa.get(k)); if (chartMonthly) chartMonthly.destroy(); const ctxLine = document.getElementById("chart-monthly-nap").getContext("2d"); if (!labels.length) chartMonthly = new Chart(ctxLine, { type:'line', data:{labels:['SIN DATOS'], datasets:[{data:[0],borderColor:'#003399'}] }, options:{responsive:true, maintainAspectRatio:false} }); else { const grad = ctxLine.createLinearGradient(0,0,0,220); grad.addColorStop(0,"rgba(0,51,153,0.25)"); grad.addColorStop(1,"rgba(0,51,153,0)"); chartMonthly = new Chart(ctxLine, { type:'line', data:{labels, datasets:[{label:'NAP MENSUAL', data, borderColor:'#003399', borderWidth:3, backgroundColor:grad, fill:true, tension:0.3, pointBackgroundColor:'#D4AF37', pointRadius:4}] }, options:{ responsive:true, maintainAspectRatio:false, scales:{ y:{ ticks:{ callback:v=>formatCurrencyNoSymbol(v) } } } } }); } const estMap = {}; filteredProduccion.forEach(r => { let e = (r.ESTATUS || "INDEFINIDO").trim(); e = e.charAt(0).toUpperCase()+e.slice(1).toLowerCase(); estMap[e] = (estMap[e]||0)+1; }); if (chartStatus) chartStatus.destroy(); const ctxBar = document.getElementById("chart-status-distribution").getContext("2d"); if (Object.keys(estMap).length === 0) chartStatus = new Chart(ctxBar, { type:'bar', data:{labels:['SIN DATOS'], datasets:[{data:[0],backgroundColor:'#8D99AE'}] }, options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}} }); else { const colors = Object.keys(estMap).map(e => { const l=e.toLowerCase(); if(l==='activo'||l==='activa') return '#2A9D8F'; if(l==='pendiente') return '#E9C46A'; if(l==='terminada'||l==='suspendida') return '#E76F51'; return '#8D99AE'; }); chartStatus = new Chart(ctxBar, { type:'bar', data:{ labels:Object.keys(estMap), datasets:[{ data:Object.values(estMap), backgroundColor:colors, borderRadius:6, barPercentage:0.6 }] }, options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{ x:{ ticks:{ stepSize:1 } } } } }); } }
+    function renderTopAgentes() { const agentes = {}; filteredProduccion.forEach(r => { const nom = r.AGENTE; if(!nom) return; if(!agentes[nom]) agentes[nom] = { polizas:0, nap:0, terminadas:0 }; const nap = parseFloat(r.PRIMA_NAP.replace(/[^0-9.-]/g, "")); const est = (r.ESTATUS||"").toUpperCase(); agentes[nom].polizas++; if(!isNaN(nap)) agentes[nom].nap += nap; if(est==="TERMINADA"||est==="SUSPENDIDA") agentes[nom].terminadas++; }); const top = Object.entries(agentes).sort((a,b)=>b[1].nap - a[1].nap).slice(0,5); const tbody = document.getElementById("tbody-top-agentes"); tbody.innerHTML = ""; if(!top.length) { tbody.innerHTML="<tr><td colspan='3' class='text-center'>SIN INFORMACIÓN</td></tr>"; return; } top.forEach(([nombre,ag]) => { const pers = ag.polizas ? ((ag.polizas-ag.terminadas)/ag.polizas)*100 : 100; tbody.innerHTML += `<tr><td class="text-left">${nombre.toUpperCase()}</td><td class="text-center">${formatCurrencyNoSymbol(ag.nap)}</td><td class="text-center" style="color:${pers>=80?'#2A9D8F':'#E76F51'};">${formatPercent(pers)}</td></tr>`; }); }
+    function renderTablaProductosShare() { const prodMap = {}; filteredProduccion.forEach(r => { const prod = r.PRODUCTO || "OTROS"; const nap = parseFloat(r.PRIMA_NAP.replace(/[^0-9.-]/g, "")); if(!prodMap[prod]) prodMap[prod] = { polizas:0, nap:0 }; prodMap[prod].polizas++; if(!isNaN(nap)) prodMap[prod].nap += nap; }); const tbody = document.getElementById("tbody-productos"); tbody.innerHTML = ""; if(Object.keys(prodMap).length === 0) { tbody.innerHTML="<tr><td colspan='3' class='text-center'>SIN DATOS</td></tr>"; return; } Object.entries(prodMap).sort((a,b)=>b[1].nap - a[1].nap).forEach(([name,data]) => { tbody.innerHTML += `<tr><td class="text-left">${name.toUpperCase()}</td><td class="text-center">${data.polizas}</td><td class="text-right">${formatCurrencyNoSymbol(data.nap)}</td></tr>`; }); }
 
-    function renderPersistenciaGlobal() {
-        const total = filteredProduccion.length;
-        if (total === 0) { document.getElementById("persistencia-global-label").innerText = "Persistencia Global: --%"; return; }
-        const activas = filteredProduccion.filter(r => { const e = (r.ESTATUS || "").toUpperCase(); return e === "ACTIVO" || e === "ACTIVA"; }).length;
-        document.getElementById("persistencia-global-label").innerHTML = `Persistencia Global: ${formatPercent((activas/total)*100)}`;
-    }
-
-    function renderGraficos() {
-        const mapa = new Map();
-        filteredProduccion.forEach(r => {
-            const fecha = new Date(r.EMISION);
-            if (!isNaN(fecha)) {
-                const key = `${fecha.getFullYear()}-${String(fecha.getMonth()+1).padStart(2,'0')}`;
-                const nap = parseFloat(r.PRIMA_NAP.replace(/[^0-9.-]/g, ""));
-                if (!isNaN(nap)) mapa.set(key, (mapa.get(key)||0)+nap);
-            }
-        });
-        const sorted = [...mapa.keys()].sort();
-        const labels = sorted.map(k => { const [y,m]=k.split('-'); return new Date(y,m-1).toLocaleString('es',{month:'short',year:'numeric'}); });
-        const data = sorted.map(k => mapa.get(k));
-        if (chartMonthly) chartMonthly.destroy();
-        const ctxLine = document.getElementById("chart-monthly-nap").getContext("2d");
-        if (!labels.length) chartMonthly = new Chart(ctxLine, { type:'line', data:{labels:['Sin datos'], datasets:[{data:[0],borderColor:'#003399'}] }, options:{responsive:true, maintainAspectRatio:false} });
-        else {
-            const grad = ctxLine.createLinearGradient(0,0,0,220);
-            grad.addColorStop(0,"rgba(0,51,153,0.25)"); grad.addColorStop(1,"rgba(0,51,153,0)");
-            chartMonthly = new Chart(ctxLine, { type:'line', data:{labels, datasets:[{label:'NAP Mensual', data, borderColor:'#003399', borderWidth:3, backgroundColor:grad, fill:true, tension:0.3, pointBackgroundColor:'#D4AF37', pointRadius:4}] }, options:{ responsive:true, maintainAspectRatio:false, scales:{ y:{ ticks:{ callback:v=>formatCurrencyNoSymbol(v) } } } } });
-        }
-        const estMap = {};
-        filteredProduccion.forEach(r => { let e = (r.ESTATUS || "Indefinido").trim(); e = e.charAt(0).toUpperCase()+e.slice(1).toLowerCase(); estMap[e] = (estMap[e]||0)+1; });
-        if (chartStatus) chartStatus.destroy();
-        const ctxBar = document.getElementById("chart-status-distribution").getContext("2d");
-        if (Object.keys(estMap).length === 0) chartStatus = new Chart(ctxBar, { type:'bar', data:{labels:['Sin datos'], datasets:[{data:[0],backgroundColor:'#8D99AE'}] }, options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}} });
-        else {
-            const colors = Object.keys(estMap).map(e => { const l=e.toLowerCase(); if(l==='activo'||l==='activa') return '#2A9D8F'; if(l==='pendiente') return '#E9C46A'; if(l==='terminada'||l==='suspendida') return '#E76F51'; return '#8D99AE'; });
-            chartStatus = new Chart(ctxBar, { type:'bar', data:{ labels:Object.keys(estMap), datasets:[{ data:Object.values(estMap), backgroundColor:colors, borderRadius:6, barPercentage:0.6 }] }, options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}}, scales:{ x:{ ticks:{ stepSize:1 } } } } });
-        }
-    }
-
-    function renderTopAgentes() {
-        const agentes = {};
-        filteredProduccion.forEach(r => {
-            const nom = r.AGENTE; if(!nom) return;
-            if(!agentes[nom]) agentes[nom] = { polizas:0, nap:0, terminadas:0 };
-            const nap = parseFloat(r.PRIMA_NAP.replace(/[^0-9.-]/g, ""));
-            const est = (r.ESTATUS||"").toUpperCase();
-            agentes[nom].polizas++;
-            if(!isNaN(nap)) agentes[nom].nap += nap;
-            if(est==="TERMINADA"||est==="SUSPENDIDA") agentes[nom].terminadas++;
-        });
-        const top = Object.entries(agentes).sort((a,b)=>b[1].nap - a[1].nap).slice(0,5);
-        const tbody = document.getElementById("tbody-top-agentes"); tbody.innerHTML = "";
-        if(!top.length) { tbody.innerHTML="<tr><td colspan='3' class='text-center'>Sin información</td></tr>"; return; }
-        top.forEach(([nombre,ag]) => {
-            const pers = ag.polizas ? ((ag.polizas-ag.terminadas)/ag.polizas)*100 : 100;
-            tbody.innerHTML += `<tr><td class="text-left">${nombre}</td><td class="text-center">${formatCurrencyNoSymbol(ag.nap)}</td><td class="text-center" style="color:${pers>=80?'#2A9D8F':'#E76F51'};">${formatPercent(pers)}</td></tr>`;
-        });
-    }
-
-    function renderTablaProductosShare() {
-        const prodMap = {};
-        filteredProduccion.forEach(r => {
-            const prod = r.PRODUCTO || "Otros";
-            const nap = parseFloat(r.PRIMA_NAP.replace(/[^0-9.-]/g, ""));
-            if(!prodMap[prod]) prodMap[prod] = { polizas:0, nap:0 };
-            prodMap[prod].polizas++;
-            if(!isNaN(nap)) prodMap[prod].nap += nap;
-        });
-        const tbody = document.getElementById("tbody-productos"); tbody.innerHTML = "";
-        if(Object.keys(prodMap).length === 0) { tbody.innerHTML="<tr><td colspan='3' class='text-center'>Sin datos</td></tr>"; return; }
-        Object.entries(prodMap).sort((a,b)=>b[1].nap - a[1].nap).forEach(([name,data]) => {
-            tbody.innerHTML += `<tr><td class="text-left">${name}</td><td class="text-center">${data.polizas}</td><td class="text-right">${formatCurrencyNoSymbol(data.nap)}</td></tr>`;
-        });
-    }
-
-    // RENDER TABLA PÓLIZAS DETALLE CON NUEVO FILTRO DE COMISIÓN
-    function renderTablaPolizasDetalle() {
+    function renderTablaPolizasDetalle() { 
         const query = document.getElementById("search-polizas").value.toLowerCase();
         let source = filteredProduccion.filter(r => !query || (r.AGENTE||"").toLowerCase().includes(query) || (r.CLIENTE||"").toLowerCase().includes(query) || (r.CODIGO_POLIZA||"").toLowerCase().includes(query));
-        
-        // Aplicar filtro de comisión
-        if (polizasComisionFilter === "CON") {
-            source = source.filter(r => comisionCodesSet.has(r.CODIGO_POLIZA));
-        } else if (polizasComisionFilter === "SIN") {
-            source = source.filter(r => !comisionCodesSet.has(r.CODIGO_POLIZA));
-        }
-        
-        const tbody = document.getElementById("tbody-detallado-polizas"); tbody.innerHTML = "";
-        const container = document.getElementById("polizas-btn-container"); container.innerHTML = "";
-        if(!source.length) { tbody.innerHTML="<tr><td colspan='7' class='text-center'>No hay coincidencias</td></tr>"; return; }
-        let rows = polizasExpandidas ? source : source.slice(0,6);
-        rows.forEach(row => {
-            const nap = parseFloat(row.PRIMA_NAP.replace(/[^0-9.-]/g, ""));
-            let pill = "pill-neutral";
-            const up = (row.ESTATUS||"").toUpperCase();
-            if(up==="ACTIVO"||up==="ACTIVA") pill="pill-active";
-            else if(up==="PENDIENTE") pill="pill-pending";
-            else if(up==="TERMINADA"||up==="SUSPENDIDA") pill="pill-failed";
-            
-            const tieneComision = comisionCodesSet.has(row.CODIGO_POLIZA);
-            const checkIcon = tieneComision ? '<i class="fa-solid fa-check-circle comision-check" style="color:#2A9D8F;" title="Tiene comisión asociada"></i>' : '<i class="fa-solid fa-circle-xmark comision-check" style="color:#8D99AE;" title="Sin comisión"></i>';
-            
-            const master = document.createElement("tr"); master.className="interactive-row";
-            master.innerHTML = `<td class="text-center"><button class="trigger-arrow"><i class="fa-solid fa-angle-right"></i></button></td>
-                                <td class="text-left">${row.AGENTE||"N/A"}</td>
-                                <td class="text-left">${row.PRODUCTO||"-"}</td>
-                                <td class="text-left"><code>${row.CODIGO_POLIZA||"N/A"}</code></td>
-                                <td class="text-center">${checkIcon}</td>
-                                <td class="text-right">${formatCurrencyNoSymbol(nap)}</td>
-                                <td class="text-center"><span class="badge-pill-flat ${pill}">${row.ESTATUS||"PENDIENTE"}</span></td>`;
-            
-            const detail = document.createElement("tr"); detail.className="accordion-hidden-row";
-            detail.innerHTML = `<td colspan="7"><div class="expanded-detail-card"><div class="detail-grid">
-                <div class="detail-field"><span class="field-label"><i class="fa-regular fa-user"></i> Asegurado</span><span class="field-value">${row.CLIENTE||"—"}</span></div>
-                <div class="detail-field"><span class="field-label"><i class="fa-regular fa-calendar-check"></i> Fecha Activación</span><span class="field-value">${row.ACTIVACION||"—"}</span></div>
-                <div class="detail-field"><span class="field-label"><i class="fa-regular fa-calendar"></i> F. Emisión</span><span class="field-value">${row.EMISION||"—"}</span></div>
-                <div class="detail-field"><span class="field-label"><i class="fa-regular fa-address-card"></i> Dirección</span><span class="field-value">${row.DIRECCION||"—"}</span></div>
-                <div class="detail-field"><span class="field-label"><i class="fa-regular fa-location-dot"></i> Ciudad / Zip</span><span class="field-value">${row.CIUDAD||"—"} ${row.ZIP_CODE?`(${row.ZIP_CODE})`:""}</span></div>
-                <div class="detail-field"><span class="field-label"><i class="fa-regular fa-phone"></i> Teléfono</span><span class="field-value">${row.TELEFONO||"—"}</span></div>
-                <div class="detail-field"><span class="field-label"><i class="fa-regular fa-id-card"></i> ID Producer</span><span class="field-value">${row.ID_PRODUCER||"—"}</span></div>
-            </div></div></td>`;
-            master.addEventListener("click",(e)=>{e.stopPropagation(); const open=detail.style.display==="table-row"; detail.style.display=open?"none":"table-row"; master.classList.toggle("row-expanded-state",!open);});
-            tbody.appendChild(master); tbody.appendChild(detail);
-        });
-        if(source.length > 6) {
-            const btn = document.createElement("button"); btn.className="btn-expand"; btn.textContent = polizasExpandidas ? "Mostrar solo 6" : "Ver todas las pólizas";
-            btn.onclick = () => { polizasExpandidas = !polizasExpandidas; renderTablaPolizasDetalle(); };
-            container.appendChild(btn);
-        }
+        if (polizasComisionFilter === "CON") source = source.filter(r => comisionCodesSet.has(r.CODIGO_POLIZA));
+        else if (polizasComisionFilter === "SIN") source = source.filter(r => !comisionCodesSet.has(r.CODIGO_POLIZA));
+        const totalItems = source.length;
+        const totalPages = Math.ceil(totalItems / itemsPorPagina);
+        if (paginaActualPolizas > totalPages) paginaActualPolizas = Math.max(1, totalPages);
+        const start = (paginaActualPolizas - 1) * itemsPorPagina;
+        const paginated = source.slice(start, start + itemsPorPagina);
+        const tbody = document.getElementById("tbody-detallado-polizas");
+        tbody.innerHTML = "";
+        const container = document.getElementById("polizas-btn-container");
+        container.innerHTML = "";
+        if (!paginated.length) { tbody.innerHTML = "<tr><td colspan='7' class='text-center'>NO HAY COINCIDENCIAS</td></tr>"; return; }
+        paginated.forEach(row => { const nap = parseFloat(row.PRIMA_NAP.replace(/[^0-9.-]/g, "")); let pill = getStatusBadgeClass(row.ESTATUS); const tieneComision = comisionCodesSet.has(row.CODIGO_POLIZA); const checkIcon = tieneComision ? '<i class="fa-solid fa-check-circle comision-check" style="color:#2A9D8F;" title="TIENE COMISIÓN ASOCIADA"></i>' : '<i class="fa-solid fa-circle-xmark comision-check" style="color:#8D99AE;" title="SIN COMISIÓN"></i>'; const master = document.createElement("tr"); master.className="interactive-row"; master.innerHTML = `<td class="text-center"><button class="trigger-arrow"><i class="fa-solid fa-angle-right"></i></button></td><td class="text-left">${(row.AGENTE||"N/A").toUpperCase()}</td><td class="text-left">${(row.PRODUCTO||"-").toUpperCase()}</td><td class="text-left"><code>${(row.CODIGO_POLIZA||"N/A").toUpperCase()}</code></td><td class="text-center">${checkIcon}</td><td class="text-right">${formatCurrencyNoSymbol(nap)}</td><td class="text-center"><span class="badge-pill-flat ${pill}">${(row.ESTATUS||"PENDIENTE").toUpperCase()}</span></td>`; const detail = document.createElement("tr"); detail.className="accordion-hidden-row"; detail.innerHTML = `<td colspan="7"><div class="expanded-detail-card"><div class="detail-grid"><div class="detail-field"><span class="field-label"><i class="fa-regular fa-user"></i> ASEGURADO</span><span class="field-value">${(row.CLIENTE||"—").toUpperCase()}</span></div><div class="detail-field"><span class="field-label"><i class="fa-regular fa-calendar-check"></i> FECHA ACTIVACIÓN</span><span class="field-value">${row.ACTIVACION||"—"}</span></div><div class="detail-field"><span class="field-label"><i class="fa-regular fa-calendar"></i> F. EMISIÓN</span><span class="field-value">${row.EMISION||"—"}</span></div><div class="detail-field"><span class="field-label"><i class="fa-regular fa-address-card"></i> DIRECCIÓN</span><span class="field-value">${(row.DIRECCION||"—").toUpperCase()}</span></div><div class="detail-field"><span class="field-label"><i class="fa-regular fa-location-dot"></i> CIUDAD / ZIP</span><span class="field-value">${(row.CIUDAD||"—").toUpperCase()} ${row.ZIP_CODE?`(${row.ZIP_CODE})`:""}</span></div><div class="detail-field"><span class="field-label"><i class="fa-regular fa-phone"></i> TELÉFONO</span><span class="field-value">${row.TELEFONO||"—"}</span></div><div class="detail-field"><span class="field-label"><i class="fa-regular fa-id-card"></i> ID PRODUCER</span><span class="field-value">${(row.ID_PRODUCER||"—").toUpperCase()}</span></div></div></div></td>`; master.addEventListener("click",(e)=>{e.stopPropagation(); const open=detail.style.display==="table-row"; detail.style.display=open?"none":"table-row"; master.classList.toggle("row-expanded-state",!open);}); tbody.appendChild(master); tbody.appendChild(detail); });
+        if (totalPages > 1) { const paginationDiv = document.createElement("div"); paginationDiv.className = "pagination-controls"; paginationDiv.innerHTML = `<button class="pagination-btn" id="prevPolizasBtn" ${paginaActualPolizas===1?'disabled':''}>ANTERIOR</button><span class="pagination-info">PÁGINA ${paginaActualPolizas} DE ${totalPages}</span><button class="pagination-btn" id="nextPolizasBtn" ${paginaActualPolizas===totalPages?'disabled':''}>SIGUIENTE</button>`; container.appendChild(paginationDiv); document.getElementById("prevPolizasBtn")?.addEventListener("click", () => { if(paginaActualPolizas>1){ paginaActualPolizas--; renderTablaPolizasDetalle(); } }); document.getElementById("nextPolizasBtn")?.addEventListener("click", () => { if(paginaActualPolizas<totalPages){ paginaActualPolizas++; renderTablaPolizasDetalle(); } }); }
     }
 
-    function renderTablaContrataciones() {
+    function renderTablaContrataciones() { 
         const query = document.getElementById("search-contrataciones").value.toLowerCase();
         let filtered = rawContratacion.filter(r => !query || (r.AGENTE||"").toLowerCase().includes(query));
-        const groupMap = new Map();
-        for(const rec of filtered) {
-            const agente = rec.AGENTE;
-            if(!groupMap.has(agente)) groupMap.set(agente, []);
-            groupMap.get(agente).push(rec);
-        }
-        let agentesData = [];
-        for(const [agente, registros] of groupMap.entries()) {
-            const sorted = registros.sort((a,b) => new Date(b.FECHA_CREACION) - new Date(a.FECHA_CREACION));
-            agentesData.push({ agente, latest: sorted[0], history: sorted.slice(1) });
-        }
+        const groupMap = new Map(); for(const rec of filtered) { const agente = rec.AGENTE; if(!groupMap.has(agente)) groupMap.set(agente, []); groupMap.get(agente).push(rec); }
+        let agentesData = []; for(const [agente, registros] of groupMap.entries()) { const sorted = registros.sort((a,b) => new Date(b.FECHA_CREACION) - new Date(a.FECHA_CREACION)); agentesData.push({ agente, latest: sorted[0], history: sorted.slice(1) }); }
         agentesData.sort((a,b) => new Date(b.latest.FECHA_CREACION) - new Date(a.latest.FECHA_CREACION));
-        const tbody = document.getElementById("tbody-contrataciones"); tbody.innerHTML = "";
-        const container = document.getElementById("contrataciones-btn-container"); container.innerHTML = "";
-        if(!agentesData.length) { tbody.innerHTML="<tr><td colspan='4' class='text-center'>Sin registros</td></tr>"; return; }
-        let rows = contratacionesExpandidas ? agentesData : agentesData.slice(0,6);
-        rows.forEach(item => {
-            let badge = "pill-info";
-            const est = (item.latest.ESTATUS||"").toUpperCase();
-            if(est === "CREATED - NEW") badge = "pill-pending";
-            else if(est === "APROBADO") badge = "pill-active";
-            const master = document.createElement("tr"); master.className="interactive-row";
-            master.innerHTML = `<td class="text-center"><button class="trigger-arrow"><i class="fa-solid fa-angle-right"></i></button></td>
-                                <td class="text-left">${item.agente}</td>
-                                <td class="text-center">${item.latest.FECHA_CREACION||"-"}</td>
-                                <td class="text-center"><span class="badge-pill-flat ${badge}">${item.latest.ESTATUS||"En proceso"}</span></td>`;
-            const detail = document.createElement("tr"); detail.className="accordion-hidden-row";
-            let html = `<div class="expanded-detail-card"><div class="detail-grid">
-                            <div class="detail-field"><span class="field-label">UPLINE</span><span class="field-value">${item.latest.UPLINE||"Directo"}</span></div>
-                            <div class="detail-field"><span class="field-label">Nivel Actual</span><span class="field-value">${item.latest.CODIGO_NIVEL||"—"}</span></div>`;
-            if(item.history.length) {
-                const prev = item.history[0];
-                html += `<div class="detail-field"><span class="field-label">Nivel Anterior</span><span class="field-value">${prev.CODIGO_NIVEL||"—"}</span></div>
-                         <div class="detail-field"><span class="field-label">Fecha Proceso Anterior</span><span class="field-value">${prev.FECHA_CREACION||"—"}</span></div>
-                         <div class="detail-field"><span class="field-label">Tipo Proceso Anterior</span><span class="field-value">${prev.TIPO_PROCESO||"—"}</span></div>`;
-            } else { html += `<div class="detail-field"><span class="field-label">Nivel Anterior</span><span class="field-value">—</span></div>`; }
-            html += `</div></div>`;
-            detail.innerHTML = `<td colspan="4">${html}</td>`;
-            master.addEventListener("click",(e)=>{e.stopPropagation(); const open=detail.style.display==="table-row"; detail.style.display=open?"none":"table-row"; master.classList.toggle("row-expanded-state",!open);});
-            tbody.appendChild(master); tbody.appendChild(detail);
-        });
-        if(agentesData.length > 6) {
-            const btn = document.createElement("button"); btn.className="btn-expand"; btn.textContent = contratacionesExpandidas ? "Mostrar solo 6" : "Ver todos los agentes";
-            btn.onclick = () => { contratacionesExpandidas = !contratacionesExpandidas; renderTablaContrataciones(); };
-            container.appendChild(btn);
-        }
+        const totalItems = agentesData.length, totalPages = Math.ceil(totalItems / itemsPorPagina);
+        if (paginaActualContrataciones > totalPages) paginaActualContrataciones = Math.max(1, totalPages);
+        const start = (paginaActualContrataciones - 1) * itemsPorPagina;
+        const paginated = agentesData.slice(start, start + itemsPorPagina);
+        const tbody = document.getElementById("tbody-contrataciones"); tbody.innerHTML = ""; const container = document.getElementById("contrataciones-btn-container"); container.innerHTML = "";
+        if (!paginated.length) { tbody.innerHTML="<tr><td colspan='4' class='text-center'>SIN REGISTROS</td></tr>"; return; }
+        paginated.forEach(item => { let badge = getStatusBadgeClass(item.latest.ESTATUS); const master = document.createElement("tr"); master.className="interactive-row"; master.innerHTML = `<td class="text-center"><button class="trigger-arrow"><i class="fa-solid fa-angle-right"></i></button></td><td class="text-left">${item.agente.toUpperCase()}</td><td class="text-center">${item.latest.FECHA_CREACION||"-"}</td><td class="text-center"><span class="badge-pill-flat ${badge}">${(item.latest.ESTATUS||"EN PROCESO").toUpperCase()}</span></td>`; const detail = document.createElement("tr"); detail.className="accordion-hidden-row"; let html = `<div class="expanded-detail-card"><div class="detail-grid"><div class="detail-field"><span class="field-label">UPLINE</span><span class="field-value">${(item.latest.UPLINE||"DIRECTO").toUpperCase()}</span></div><div class="detail-field"><span class="field-label">NIVEL ACTUAL</span><span class="field-value">${item.latest.CODIGO_NIVEL||"—"}</span></div>`; if(item.history.length) { const prev = item.history[0]; html += `<div class="detail-field"><span class="field-label">NIVEL ANTERIOR</span><span class="field-value">${prev.CODIGO_NIVEL||"—"}</span></div><div class="detail-field"><span class="field-label">FECHA PROCESO ANTERIOR</span><span class="field-value">${prev.FECHA_CREACION||"—"}</span></div><div class="detail-field"><span class="field-label">TIPO PROCESO ANTERIOR</span><span class="field-value">${(prev.TIPO_PROCESO||"—").toUpperCase()}</span></div>`; } else { html += `<div class="detail-field"><span class="field-label">NIVEL ANTERIOR</span><span class="field-value">—</span></div>`; } html += `</div></div>`; detail.innerHTML = `<td colspan="4">${html}</td>`; master.addEventListener("click",(e)=>{e.stopPropagation(); const open=detail.style.display==="table-row"; detail.style.display=open?"none":"table-row"; master.classList.toggle("row-expanded-state",!open);}); tbody.appendChild(master); tbody.appendChild(detail); });
+        if (totalPages > 1) { const paginationDiv = document.createElement("div"); paginationDiv.className = "pagination-controls"; paginationDiv.innerHTML = `<button class="pagination-btn" id="prevContratacionesBtn" ${paginaActualContrataciones===1?'disabled':''}>ANTERIOR</button><span class="pagination-info">PÁGINA ${paginaActualContrataciones} DE ${totalPages}</span><button class="pagination-btn" id="nextContratacionesBtn" ${paginaActualContrataciones===totalPages?'disabled':''}>SIGUIENTE</button>`; container.appendChild(paginationDiv); document.getElementById("prevContratacionesBtn")?.addEventListener("click", () => { if(paginaActualContrataciones>1){ paginaActualContrataciones--; renderTablaContrataciones(); } }); document.getElementById("nextContratacionesBtn")?.addEventListener("click", () => { if(paginaActualContrataciones<totalPages){ paginaActualContrataciones++; renderTablaContrataciones(); } }); }
     }
 
-    function renderTablaJerarquia() {
-        const query = document.getElementById("search-jerarquia").value.toLowerCase();
-        const agenteFiltro = document.getElementById("agent-filter").value;
-        let filtered = rawJerarquia;
-        if(agenteFiltro !== "TODOS") filtered = filtered.filter(r => (r.AGENTE||"") === agenteFiltro);
-        if(query) filtered = filtered.filter(r => (r.AGENTE||"").toLowerCase().includes(query) || (r.UPLINE||"").toLowerCase().includes(query));
-        const groupMap = new Map();
-        for(const rec of filtered) {
-            const agente = rec.AGENTE;
-            if(!groupMap.has(agente)) groupMap.set(agente, []);
-            groupMap.get(agente).push(rec);
-        }
-        let agentesData = [];
-        for(const [agente, registros] of groupMap.entries()) {
-            const sorted = registros.sort((a,b) => new Date(b.FECHA_INGRESO) - new Date(a.FECHA_INGRESO));
-            agentesData.push({ agente, latest: sorted[0], history: sorted.slice(1) });
-        }
+    function renderTablaJerarquia() { 
+        const query = document.getElementById("search-jerarquia").value.toLowerCase(); const agenteFiltro = document.getElementById("agent-filter").value;
+        let filtered = rawJerarquia; if(agenteFiltro !== "TODOS") filtered = filtered.filter(r => (r.AGENTE||"") === agenteFiltro); if(query) filtered = filtered.filter(r => (r.AGENTE||"").toLowerCase().includes(query) || (r.UPLINE||"").toLowerCase().includes(query));
+        const groupMap = new Map(); for(const rec of filtered) { const agente = rec.AGENTE; if(!groupMap.has(agente)) groupMap.set(agente, []); groupMap.get(agente).push(rec); }
+        let agentesData = []; for(const [agente, registros] of groupMap.entries()) { const sorted = registros.sort((a,b) => new Date(b.FECHA_INGRESO) - new Date(a.FECHA_INGRESO)); agentesData.push({ agente, latest: sorted[0], history: sorted.slice(1) }); }
         agentesData.sort((a,b) => (b.latest.FECHA_INGRESO||"").localeCompare(a.latest.FECHA_INGRESO||""));
-        const tbody = document.getElementById("tbody-jerarquia"); tbody.innerHTML = "";
-        const container = document.getElementById("jerarquia-btn-container"); container.innerHTML = "";
-        if(!agentesData.length) { tbody.innerHTML="<tr><td colspan='4' class='text-center'>Sin registros de jerarquía</td></tr>"; return; }
-        let rows = jerarquiaExpandidas ? agentesData : agentesData.slice(0,6);
-        rows.forEach(item => {
-            const master = document.createElement("tr"); master.className="interactive-row";
-            master.innerHTML = `<td class="text-center"><button class="trigger-arrow"><i class="fa-solid fa-angle-right"></i></button></td>
-                                <td class="text-left">${item.agente}</td>
-                                <td class="text-left">${item.latest.ID_PRODUCER}</td>
-                                <td class="text-center">${item.latest.CODIGO_NIVEL}</td>`;
-            const detail = document.createElement("tr"); detail.className="accordion-hidden-row";
-            if(item.history.length) {
-                let html = `<div class="expanded-detail-card"><strong>Historial de cambios</strong><div class="overflow-wrapper"><table class="inner-payment-table"><thead><tr><th>Fecha Ingreso</th><th>Nivel</th><th>Upline</th><th>NPN Upline</th></tr></thead><tbody>`;
-                for(const h of item.history) html += `<tr><td>${h.FECHA_INGRESO||"-"}</td><td>${h.CODIGO_NIVEL||"-"}</td><td>${h.UPLINE||"-"}</td><td>${h.NPN_UPLINE||"-"}</td></tr>`;
-                html += `</tbody></table></div></div>`;
-                detail.innerHTML = `<td colspan="4">${html}</td>`;
-            } else {
-                detail.innerHTML = `<td colspan="4"><div class="expanded-detail-card"><div class="detail-grid"><div class="detail-field"><span class="field-label">NPN Agente</span><span class="field-value">${item.latest.NPN_AGENTE||"—"}</span></div><div class="detail-field"><span class="field-label">Fecha Ingreso</span><span class="field-value">${item.latest.FECHA_INGRESO||"—"}</span></div><div class="detail-field"><span class="field-label">Upline</span><span class="field-value">${item.latest.UPLINE||"—"}</span></div><div class="detail-field"><span class="field-label">NPN Upline</span><span class="field-value">${item.latest.NPN_UPLINE||"—"}</span></div></div></div></td>`;
-            }
-            master.addEventListener("click",(e)=>{e.stopPropagation(); const open=detail.style.display==="table-row"; detail.style.display=open?"none":"table-row"; master.classList.toggle("row-expanded-state",!open);});
-            tbody.appendChild(master); tbody.appendChild(detail);
-        });
-        if(agentesData.length > 6) {
-            const btn = document.createElement("button"); btn.className="btn-expand"; btn.textContent = jerarquiaExpandidas ? "Mostrar solo 6" : "Ver todos los agentes";
-            btn.onclick = () => { jerarquiaExpandidas = !jerarquiaExpandidas; renderTablaJerarquia(); };
-            container.appendChild(btn);
-        }
+        const totalItems = agentesData.length, totalPages = Math.ceil(totalItems / itemsPorPagina);
+        if (paginaActualJerarquia > totalPages) paginaActualJerarquia = Math.max(1, totalPages);
+        const start = (paginaActualJerarquia - 1) * itemsPorPagina;
+        const paginated = agentesData.slice(start, start + itemsPorPagina);
+        const tbody = document.getElementById("tbody-jerarquia"); tbody.innerHTML = ""; const container = document.getElementById("jerarquia-btn-container"); container.innerHTML = "";
+        if (!paginated.length) { tbody.innerHTML="<tr><td colspan='4' class='text-center'>SIN REGISTROS DE JERARQUÍA</td></tr>"; return; }
+        paginated.forEach(item => { const master = document.createElement("tr"); master.className="interactive-row"; master.innerHTML = `<td class="text-center"><button class="trigger-arrow"><i class="fa-solid fa-angle-right"></i></button></td><td class="text-left">${item.agente.toUpperCase()}</td><td class="text-left">${(item.latest.ID_PRODUCER||"").toUpperCase()}</td><td class="text-center">${item.latest.CODIGO_NIVEL}</td>`; const detail = document.createElement("tr"); detail.className="accordion-hidden-row"; if(item.history.length) { let html = `<div class="expanded-detail-card"><strong>HISTORIAL DE CAMBIOS</strong><div class="overflow-wrapper"><table class="inner-payment-table"><thead><tr><th>FECHA INGRESO</th><th>NIVEL</th><th>UPLINE</th><th>NPN UPLINE</th></tr></thead><tbody>`; for(const h of item.history) html += `<tr><td>${h.FECHA_INGRESO||"-"}</td><td>${h.CODIGO_NIVEL||"-"}</td><td>${(h.UPLINE||"-").toUpperCase()}</td><td>${(h.NPN_UPLINE||"-").toUpperCase()}</td></tr>`; html += `</tbody></table></div></div>`; detail.innerHTML = `<td colspan="4">${html}</td>`; } else { detail.innerHTML = `<td colspan="4"><div class="expanded-detail-card"><div class="detail-grid"><div class="detail-field"><span class="field-label">NPN AGENTE</span><span class="field-value">${(item.latest.NPN_AGENTE||"—").toUpperCase()}</span></div><div class="detail-field"><span class="field-label">FECHA INGRESO</span><span class="field-value">${item.latest.FECHA_INGRESO||"—"}</span></div><div class="detail-field"><span class="field-label">UPLINE</span><span class="field-value">${(item.latest.UPLINE||"—").toUpperCase()}</span></div><div class="detail-field"><span class="field-label">NPN UPLINE</span><span class="field-value">${(item.latest.NPN_UPLINE||"—").toUpperCase()}</span></div></div></div></td>`; } master.addEventListener("click",(e)=>{e.stopPropagation(); const open=detail.style.display==="table-row"; detail.style.display=open?"none":"table-row"; master.classList.toggle("row-expanded-state",!open);}); tbody.appendChild(master); tbody.appendChild(detail); });
+        if (totalPages > 1) { const paginationDiv = document.createElement("div"); paginationDiv.className = "pagination-controls"; paginationDiv.innerHTML = `<button class="pagination-btn" id="prevJerarquiaBtn" ${paginaActualJerarquia===1?'disabled':''}>ANTERIOR</button><span class="pagination-info">PÁGINA ${paginaActualJerarquia} DE ${totalPages}</span><button class="pagination-btn" id="nextJerarquiaBtn" ${paginaActualJerarquia===totalPages?'disabled':''}>SIGUIENTE</button>`; container.appendChild(paginationDiv); document.getElementById("prevJerarquiaBtn")?.addEventListener("click", () => { if(paginaActualJerarquia>1){ paginaActualJerarquia--; renderTablaJerarquia(); } }); document.getElementById("nextJerarquiaBtn")?.addEventListener("click", () => { if(paginaActualJerarquia<totalPages){ paginaActualJerarquia++; renderTablaJerarquia(); } }); }
     }
 
     function renderTablaPagosAgrupados() {
         const query = document.getElementById("search-pagos").value.toLowerCase();
         const tracking = document.getElementById("payment-tracking-filter").value;
-        const monthYear = document.getElementById("payment-month-filter").value;
+        const monthFilterRaw = document.getElementById("payment-pdf-filter").value;
         const paymentStatus = document.getElementById("payment-status-filter").value;
+        
         let filtered = rawPagos.filter(p => {
             if (!(p.CLIENTE||"").toLowerCase().includes(query) && !(p.CODIGO_POLIZA||"").toLowerCase().includes(query)) return false;
-            if (tracking !== "TODOS" && p.SEGUIMIENTO_PAGO !== tracking) return false;
-            if (paymentStatus !== "TODOS" && p.ESTATUS !== paymentStatus) return false;
-            if (monthYear !== "TODOS") {
-                let date = new Date(p.PAGADO_HASTA);
-                if(isNaN(date)) { const parts = p.PAGADO_HASTA.split(/[-/]/); if(parts.length===3) date = new Date(parts[2], parts[1]-1, parts[0]); }
-                if(!isNaN(date)) { const key = `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}`; if(key !== monthYear) return false; }
-                else return false;
+            if (tracking !== "TODOS" && (p.SEGUIMIENTO_PAGO||"").toUpperCase() !== tracking) return false;
+            if (paymentStatus !== "TODOS" && (p.ESTATUS||"").toUpperCase() !== paymentStatus) return false;
+            if (monthFilterRaw !== "TODOS") {
+                const info = extraerMesAnioDesdeRegistroPDF(p.REGISTRO_PDF);
+                if (!info || info.key !== monthFilterRaw) return false;
             }
             return true;
         });
+        
         const groups = new Map();
         for(const pago of filtered) {
             const codigo = pago.CODIGO_POLIZA;
             if(!codigo) continue;
-            if(!groups.has(codigo)) groups.set(codigo, { rows:[], cliente:pago.CLIENTE, idProducto:pago.ID_PRODUCTO, numTrans:0, latestPaidUntil:null });
+            if(!groups.has(codigo)) groups.set(codigo, { rows:[], cliente:pago.CLIENTE, idProducto:pago.ID_PRODUCTO, latestPaidUntil:null, latestStatus:null });
             const g = groups.get(codigo);
             g.rows.push(pago);
-            g.numTrans++;
             if(!g.cliente && pago.CLIENTE) g.cliente = pago.CLIENTE;
             if(!g.idProducto && pago.ID_PRODUCTO) g.idProducto = pago.ID_PRODUCTO;
             if(pago.PAGADO_HASTA) {
                 let d = new Date(pago.PAGADO_HASTA);
                 if(isNaN(d)) { const parts = pago.PAGADO_HASTA.split(/[-/]/); if(parts.length===3) d = new Date(parts[2], parts[1]-1, parts[0]); }
-                if(!isNaN(d) && (!g.latestPaidUntil || d > g.latestPaidUntil)) g.latestPaidUntil = d;
+                if(!isNaN(d) && (!g.latestPaidUntil || d > g.latestPaidUntil)) {
+                    g.latestPaidUntil = d;
+                    g.latestStatus = pago.ESTATUS || "PENDIENTE";
+                }
             }
+            if(!g.latestStatus) g.latestStatus = pago.ESTATUS || "PENDIENTE";
         }
+        for(const g of groups.values()) {
+            if(!g.latestStatus && g.rows.length) g.latestStatus = g.rows[0].ESTATUS || "PENDIENTE";
+        }
+        
         let filteredGroups = Array.from(groups.entries());
-        let rows = pagosExpandidos ? filteredGroups : filteredGroups.slice(0,6);
-        const tbody = document.getElementById("tbody-pagos-agrupados"); tbody.innerHTML = "";
-        const container = document.getElementById("pagos-btn-container"); container.innerHTML = "";
-        if(!rows.length) { tbody.innerHTML="<tr><td colspan='6' class='text-center'>Sin registros de pagos</td></tr>"; return; }
-        for(const [codigo, group] of rows) {
+        const totalItems = filteredGroups.length, totalPages = Math.ceil(totalItems / itemsPorPagina);
+        if (paginaActualPagos > totalPages) paginaActualPagos = Math.max(1, totalPages);
+        const start = (paginaActualPagos - 1) * itemsPorPagina;
+        const paginated = filteredGroups.slice(start, start + itemsPorPagina);
+        const tbody = document.getElementById("tbody-pagos-agrupados");
+        tbody.innerHTML = "";
+        const container = document.getElementById("pagos-btn-container");
+        container.innerHTML = "";
+        if (!paginated.length) { tbody.innerHTML = "<tr><td colspan='6' class='text-center'>SIN REGISTROS DE PAGOS</td></tr>"; return; }
+        for(const [codigo, group] of paginated) {
             const paidStr = group.latestPaidUntil ? group.latestPaidUntil.toISOString().split('T')[0] : "—";
-            const master = document.createElement("tr"); master.className="interactive-row";
-            master.innerHTML = `<td class="text-center"><button class="trigger-arrow"><i class="fa-solid fa-angle-right"></i></button></td><td class="text-left">${group.cliente||"—"}</td><td class="text-left"><code>${codigo}</code></td><td class="text-left">${group.idProducto||"—"}</td><td class="text-left">${paidStr}</td><td class="text-center">${group.numTrans}</td>`;
-            const detail = document.createElement("tr"); detail.className="accordion-hidden-row";
+            let statusBadge = getStatusBadgeClass(group.latestStatus);
+            const master = document.createElement("tr");
+            master.className = "interactive-row";
+            master.innerHTML = `<td class="text-center"><button class="trigger-arrow"><i class="fa-solid fa-angle-right"></i></button></td>
+                                <td class="text-left">${(group.cliente||"—").toUpperCase()}</td>
+                                <td class="text-left"><code>${codigo.toUpperCase()}</code></td>
+                                <td class="text-left">${(group.idProducto||"—").toUpperCase()}</td>
+                                <td class="text-left">${paidStr}</td>
+                                <td class="text-center"><span class="badge-pill-flat ${statusBadge}">${(group.latestStatus||"PENDIENTE").toUpperCase()}</span></td>`;
+            const detail = document.createElement("tr");
+            detail.className = "accordion-hidden-row";
             const sortedRows = [...group.rows].sort((a,b) => (new Date(b.PAGADO_HASTA)||0) - (new Date(a.PAGADO_HASTA)||0));
-            let inner = `<div class="expanded-detail-card"><strong>Detalle de transacciones (${sortedRows.length})</strong><div class="overflow-wrapper"><table class="inner-payment-table"><thead><tr><th>Pagado Hasta</th><th>Estatus</th><th>Método</th><th>Prima</th><th>Seguimiento</th></tr></thead><tbody>`;
+            let inner = `<div class="expanded-detail-card"><strong>DETALLE DE TRANSACCIONES (${sortedRows.length})</strong><div class="overflow-wrapper"><table class="inner-payment-table"><thead><tr><th>PAGADO HASTA</th><th>ESTATUS</th><th>MÉTODO</th><th>PRIMA</th><th>SEGUIMIENTO</th><th>DECLARACION</th></tr></thead><tbody>`;
             for(const t of sortedRows) {
                 const prima = parseFloat(t.PRIMA.replace(/[^0-9.-]/g,""));
-                const estClass = (t.ESTATUS||"").toUpperCase() === 'PAGADO' ? 'pill-active' : 'pill-pending';
-                inner += `<tr><td>${t.PAGADO_HASTA||"—"}</td><td><span class="badge-pill-flat ${estClass}">${t.ESTATUS||"—"}</span></td><td>${t.METODO_PAGO||"—"}</td><td class="text-right">${formatCurrencyNoSymbol(prima)}</td><td>${t.SEGUIMIENTO_PAGO||"—"}</td></tr>`;
+                const estClass = getStatusBadgeClass(t.ESTATUS);
+                inner += `<tr><td>${t.PAGADO_HASTA||"—"}</td><td><span class="badge-pill-flat ${estClass}">${(t.ESTATUS||"—").toUpperCase()}</span></td><td>${(t.METODO_PAGO||"—").toUpperCase()}</td><td class="text-right">${formatCurrencyNoSymbol(prima)}</td><td>${(t.SEGUIMIENTO_PAGO||"—").toUpperCase()}</td><td>${(t.REGISTRO_PDF||"—").toUpperCase()}</td></tr>`;
             }
             inner += `</tbody></table></div></div>`;
             detail.innerHTML = `<td colspan="6">${inner}</td>`;
-            master.addEventListener("click",(e)=>{e.stopPropagation(); const open=detail.style.display==="table-row"; detail.style.display=open?"none":"table-row"; master.classList.toggle("row-expanded-state",!open);});
-            tbody.appendChild(master); tbody.appendChild(detail);
-        }
-        if(filteredGroups.length > 6) {
-            const btn = document.createElement("button"); btn.className="btn-expand"; btn.textContent = pagosExpandidos ? "Mostrar solo 6" : "Ver todos los registros";
-            btn.onclick = () => { pagosExpandidos = !pagosExpandidos; renderTablaPagosAgrupados(); };
-            container.appendChild(btn);
-        }
-    }
-
-    function renderTablaComisiones() {
-        const query = document.getElementById("search-comisiones").value.toLowerCase();
-        let filtered = rawComisiones.filter(r => 
-            !query || 
-            (r.CLIENTE||"").toLowerCase().includes(query) || 
-            (r.CODIGO_POLIZA||"").toLowerCase().includes(query) ||
-            (r.ID_PRODUCTO||"").toLowerCase().includes(query)
-        );
-        
-        if (comisionStatusFilter !== "TODOS") {
-            filtered = filtered.filter(r => (r.ESTATUS || "").toUpperCase() === comisionStatusFilter.toUpperCase());
-        }
-        if (comisionMonthFilter !== "TODOS") {
-            filtered = filtered.filter(r => {
-                if (!r.ACTIVACION) return false;
-                let date = new Date(r.ACTIVACION);
-                if (isNaN(date)) {
-                    const parts = r.ACTIVACION.split(/[-/]/);
-                    if (parts.length === 3) date = new Date(parts[2], parts[1]-1, parts[0]);
-                }
-                if (!isNaN(date)) {
-                    const key = `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}`;
-                    return key === comisionMonthFilter;
-                }
-                return false;
-            });
-        }
-        
-        const tbody = document.getElementById("tbody-comisiones"); tbody.innerHTML = "";
-        const container = document.getElementById("comisiones-btn-container"); container.innerHTML = "";
-        if (!filtered.length) { tbody.innerHTML = "<tr><td colspan='6' class='text-center'>Sin datos de comisiones</td></tr>"; return; }
-        
-        let rows = comisionesExpandidas ? filtered : filtered.slice(0, 6);
-        rows.forEach(row => {
-            let badge = "pill-neutral";
-            const est = (row.ESTATUS || "").toUpperCase();
-            if (est === "ACTIVA") badge = "pill-active";
-            else if (est === "PENDIENTE") badge = "pill-pending";
-            else if (est === "CANCELADA") badge = "pill-failed";
-            
-            const nap = parseFloat((row.NAP || "0").replace(/,/g, '')) || 0;
-            let porcRaw = row.PORC_COMISION || "";
-            let porcNum = 0;
-            const match = porcRaw.match(/(\d+(?:\.\d+)?)/);
-            if (match) {
-                let val = parseFloat(match[1]);
-                if (val <= 1 && porcRaw.includes('.')) val = val * 100;
-                porcNum = val;
-            }
-            let comisionMonto = parseFloat((row.COMISION_POLIZA || "0").replace(/[^0-9.-]/g, ''));
-            if (isNaN(comisionMonto)) comisionMonto = nap * (porcNum / 100);
-            
-            const master = document.createElement("tr"); master.className="interactive-row";
-            master.innerHTML = `<td class="text-center"><button class="trigger-arrow"><i class="fa-solid fa-angle-right"></i></button></td>
-                                <td class="text-left"><code>${row.CODIGO_POLIZA || "N/A"}</code></td>
-                                <td class="text-left">${row.CLIENTE || "N/A"}</td>
-                                <td class="text-right">${formatCurrencyNoSymbol(nap)}</td>
-                                <td class="text-right">${formatCurrencyNoSymbol(comisionMonto)}</td>
-                                <td class="text-center"><span class="badge-pill-flat ${badge}">${row.ESTATUS || "Pendiente"}</span></td>`;
-            
-            const detail = document.createElement("tr"); detail.className="accordion-hidden-row";
-            detail.innerHTML = `<td colspan="6"><div class="expanded-detail-card"><div class="detail-grid">
-                <div class="detail-field"><span class="field-label"><i class="fa-regular fa-percent"></i> % Comisión</span><span class="field-value">${porcNum}%</span></div>
-                <div class="detail-field"><span class="field-label"><i class="fa-regular fa-id-card"></i> ID Producto</span><span class="field-value">${row.ID_PRODUCTO || "—"}</span></div>
-                <div class="detail-field"><span class="field-label"><i class="fa-regular fa-calendar"></i> Activación</span><span class="field-value">${row.ACTIVACION || "—"}</span></div>
-                <div class="detail-field"><span class="field-label"><i class="fa-regular fa-location-dot"></i> Estado</span><span class="field-value">${row.ESTADO || "—"}</span></div>
-                <div class="detail-field"><span class="field-label"><i class="fa-regular fa-credit-card"></i> Método Pago</span><span class="field-value">${row.METODO_PAGO || "—"}</span></div>
-                <div class="detail-field"><span class="field-label"><i class="fa-regular fa-chart-line"></i> Advance</span><span class="field-value">${row.ADVANCE || "—"}</span></div>
-            </div></div></td>`;
-            
             master.addEventListener("click", (e) => { e.stopPropagation(); const open = detail.style.display === "table-row"; detail.style.display = open ? "none" : "table-row"; master.classList.toggle("row-expanded-state", !open); });
             tbody.appendChild(master);
             tbody.appendChild(detail);
-        });
-        
-        if (filtered.length > 6) {
-            const btn = document.createElement("button"); btn.className = "btn-expand";
-            btn.textContent = comisionesExpandidas ? "Mostrar solo 6" : "Ver todas las comisiones";
-            btn.onclick = () => { comisionesExpandidas = !comisionesExpandidas; renderTablaComisiones(); };
-            container.appendChild(btn);
         }
+        if (totalPages > 1) {
+            const paginationDiv = document.createElement("div");
+            paginationDiv.className = "pagination-controls";
+            paginationDiv.innerHTML = `<button class="pagination-btn" id="prevPagosBtn" ${paginaActualPagos===1?'disabled':''}>ANTERIOR</button>
+                                        <span class="pagination-info">PÁGINA ${paginaActualPagos} DE ${totalPages}</span>
+                                        <button class="pagination-btn" id="nextPagosBtn" ${paginaActualPagos===totalPages?'disabled':''}>SIGUIENTE</button>`;
+            container.appendChild(paginationDiv);
+            document.getElementById("prevPagosBtn")?.addEventListener("click", () => { if(paginaActualPagos>1){ paginaActualPagos--; renderTablaPagosAgrupados(); } });
+            document.getElementById("nextPagosBtn")?.addEventListener("click", () => { if(paginaActualPagos<totalPages){ paginaActualPagos++; renderTablaPagosAgrupados(); } });
+        }
+    }
+
+    function renderTablaComisiones() { 
+        const query = document.getElementById("search-comisiones").value.toLowerCase();
+        let filtered = rawComisiones.filter(r => !query || (r.CLIENTE||"").toLowerCase().includes(query) || (r.CODIGO_POLIZA||"").toLowerCase().includes(query) || (r.ID_PRODUCTO||"").toLowerCase().includes(query));
+        if (comisionStatusFilter !== "TODOS") filtered = filtered.filter(r => (r.ESTATUS || "").toUpperCase() === comisionStatusFilter.toUpperCase());
+        if (comisionMonthFilter !== "TODOS") filtered = filtered.filter(r => { if (!r.ACTIVACION) return false; let date = new Date(r.ACTIVACION); if (isNaN(date)) { const parts = r.ACTIVACION.split(/[-/]/); if (parts.length === 3) date = new Date(parts[2], parts[1]-1, parts[0]); } if (!isNaN(date)) { const key = `${date.getFullYear()}-${String(date.getMonth()+1).padStart(2,'0')}`; return key === comisionMonthFilter; } return false; });
+        const totalItems = filtered.length, totalPages = Math.ceil(totalItems / itemsPorPagina);
+        if (paginaActualComisiones > totalPages) paginaActualComisiones = Math.max(1, totalPages);
+        const start = (paginaActualComisiones - 1) * itemsPorPagina;
+        const paginated = filtered.slice(start, start + itemsPorPagina);
+        const tbody = document.getElementById("tbody-comisiones"); tbody.innerHTML = ""; const container = document.getElementById("comisiones-btn-container"); container.innerHTML = "";
+        if (!paginated.length) { tbody.innerHTML = "<tr><td colspan='6' class='text-center'>SIN DATOS DE COMISIONES</td></tr>"; return; }
+        paginated.forEach(row => { let badge = getStatusBadgeClass(row.ESTATUS); const nap = parseFloat((row.NAP || "0").replace(/,/g, '')) || 0; let porcRaw = row.PORC_COMISION || ""; let porcNum = 0; const match = porcRaw.match(/(\d+(?:\.\d+)?)/); if (match) { let val = parseFloat(match[1]); if (val <= 1 && porcRaw.includes('.')) val = val * 100; porcNum = val; } let comisionMonto = parseFloat((row.COMISION_POLIZA || "0").replace(/[^0-9.-]/g, '')); if (isNaN(comisionMonto)) comisionMonto = nap * (porcNum / 100); const master = document.createElement("tr"); master.className="interactive-row"; master.innerHTML = `<td class="text-center"><button class="trigger-arrow"><i class="fa-solid fa-angle-right"></i></button></td><td class="text-left"><code>${(row.CODIGO_POLIZA || "N/A").toUpperCase()}</code></td><td class="text-left">${(row.CLIENTE || "N/A").toUpperCase()}</td><td class="text-right">${formatCurrencyNoSymbol(nap)}</td><td class="text-right">${formatCurrencyNoSymbol(comisionMonto)}</td><td class="text-center"><span class="badge-pill-flat ${badge}">${(row.ESTATUS || "PENDIENTE").toUpperCase()}</span></td>`; const detail = document.createElement("tr"); detail.className="accordion-hidden-row"; detail.innerHTML = `<td colspan="6"><div class="expanded-detail-card"><div class="detail-grid"><div class="detail-field"><span class="field-label"><i class="fa-regular fa-percent"></i> % COMISIÓN</span><span class="field-value">${porcNum}%</span></div><div class="detail-field"><span class="field-label"><i class="fa-regular fa-id-card"></i> ID PRODUCTO</span><span class="field-value">${(row.ID_PRODUCTO || "—").toUpperCase()}</span></div><div class="detail-field"><span class="field-label"><i class="fa-regular fa-calendar"></i> ACTIVACIÓN</span><span class="field-value">${row.ACTIVACION || "—"}</span></div><div class="detail-field"><span class="field-label"><i class="fa-regular fa-location-dot"></i> ESTADO</span><span class="field-value">${(row.ESTADO || "—").toUpperCase()}</span></div><div class="detail-field"><span class="field-label"><i class="fa-regular fa-credit-card"></i> MÉTODO PAGO</span><span class="field-value">${(row.METODO_PAGO || "—").toUpperCase()}</span></div><div class="detail-field"><span class="field-label"><i class="fa-regular fa-chart-line"></i> ADVANCE</span><span class="field-value">${row.ADVANCE || "—"}</span></div></div></div></td>`; master.addEventListener("click", (e) => { e.stopPropagation(); const open = detail.style.display === "table-row"; detail.style.display = open ? "none" : "table-row"; master.classList.toggle("row-expanded-state", !open); }); tbody.appendChild(master); tbody.appendChild(detail); });
+        if (totalPages > 1) { const paginationDiv = document.createElement("div"); paginationDiv.className = "pagination-controls"; paginationDiv.innerHTML = `<button class="pagination-btn" id="prevComisionesBtn" ${paginaActualComisiones===1?'disabled':''}>ANTERIOR</button><span class="pagination-info">PÁGINA ${paginaActualComisiones} DE ${totalPages}</span><button class="pagination-btn" id="nextComisionesBtn" ${paginaActualComisiones===totalPages?'disabled':''}>SIGUIENTE</button>`; container.appendChild(paginationDiv); document.getElementById("prevComisionesBtn")?.addEventListener("click", () => { if(paginaActualComisiones>1){ paginaActualComisiones--; renderTablaComisiones(); } }); document.getElementById("nextComisionesBtn")?.addEventListener("click", () => { if(paginaActualComisiones<totalPages){ paginaActualComisiones++; renderTablaComisiones(); } }); }
     }
 
     function showLoader(v) { document.getElementById("loader-overlay").style.display = v ? "flex" : "none"; }
